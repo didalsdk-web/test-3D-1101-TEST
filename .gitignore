@@ -5,6 +5,7 @@ env/config.js
 # 로컬 개발 환경 파일
 .env.local
 *.local.js
+env.local/
 
 # 기타 민감한 정보
 *.env
@@ -25,4 +26,5 @@ yarn-error.log*
 !package.json
 !package-lock.json
 !tsconfig.json
+!vercel.json
 

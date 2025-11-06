@@ -1,0 +1,33 @@
+# Vercel 배포 시 무시할 파일 및 폴더
+# 참고: Vercel은 이미 다음 파일들을 기본적으로 무시합니다:
+# .git, .gitignore, node_modules, .env.local, .env.*.local 등
+
+# 빌드 스크립트 (배포에는 필요 없지만 빌드 단계에서는 필요)
+# scripts/ 폴더는 빌드 단계에서 사용되므로 제외하지 않음
+# scripts/env/ 폴더만 제외 (로컬 개발용)
+scripts/env/
+
+# 개발 관련 파일
+*.md
+!README.md
+test*.html
+simple_test.html
+build_test.js
+
+# 서버 파일 (Vercel에서는 사용하지 않음)
+server.js
+server/
+package-lock.json
+
+# 로컬 개발 환경 파일
+.env.local
+*.local.js
+env.local/
+
+# Firebase 서비스 계정 키 (절대 배포하지 마세요!)
+env/serviceAccountKey.json
+serviceAccountKey.json
+
+# 빌드 산출물은 포함하되, 로컬 개발 파일은 제외
+# env/config.js는 빌드 시 생성되므로 배포에 포함됨
+
