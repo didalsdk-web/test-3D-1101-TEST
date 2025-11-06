@@ -764,6 +764,83 @@
             font-weight: 700;
         }
 
+        /* 푸터 토큰 로그인 폼 */
+        .footer-token-login {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-token-login form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            max-width: 280px;
+        }
+
+        .footer-token-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .footer-token-input-group label {
+            color: var(--text-light-gray);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .footer-token-input-group input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-white);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-token-input-group input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-token-input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-token-btn {
+            padding: 0.6rem 1rem;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            margin-top: 0.25rem;
+        }
+
+        .footer-token-btn:hover {
+            background: var(--primary-purple-hover);
+            transform: translateY(-1px);
+        }
+
+        .footer-token-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .footer-token-login form {
+                max-width: 100%;
+            }
+        }
+
         /* Modal Styles */
         .modal-overlay {
             display: none;
@@ -1192,21 +1269,22 @@
         }
 
         .btn-login, .btn-logout {
-            background: var(--primary-blue);
+            background: var(--primary-blue-bright);
             color: var(--text-white);
             border: none;
-            padding: 0.5rem 1.25rem;
+            padding: 0.625rem 1.5rem;
             border-radius: var(--border-radius);
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
             transition: var(--transition);
             font-family: inherit;
         }
 
         .btn-login:hover, .btn-logout:hover {
-            background: var(--primary-blue-bright);
+            background: #2563eb;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
         }
 
         .btn-customer-management {
@@ -1585,6 +1663,36 @@
                     </svg>
                     Google로 로그인
                 </button>
+                
+                <!-- 토큰 로그인 폼 (모달에서 숨김) -->
+                <div style="display: none;">
+                    <div style="text-align: center; margin: 1.5rem 0; color: var(--text-gray); position: relative;">
+                        <span style="background: var(--bg-darker); padding: 0 1rem; position: relative; z-index: 1;">또는</span>
+                        <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); z-index: 0;"></div>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="color: var(--text-white); font-size: 1rem; margin-bottom: 1rem; text-align: center;">토큰 로그인</h3>
+                        <form id="tokenLoginForm" onsubmit="handleTokenLogin(event); return false;">
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">사용자 ID</label>
+                                <input type="text" id="tokenUserId" required
+                                       style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                                       placeholder="사용자 ID를 입력하세요">
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">API 키</label>
+                                <input type="password" id="tokenApiKey" required
+                                       style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                                       placeholder="API 키를 입력하세요">
+                            </div>
+                            <button type="submit" id="tokenLoginBtn" 
+                                    style="width: 100%; padding: 0.75rem; background: var(--primary-purple); color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">
+                                토큰으로 로그인
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 
                 <button id="adminLoginBtn" 
                         style="width: 100%; padding: 0.75rem; background: transparent; border: none; color: var(--text-gray); font-size: 0.9rem; cursor: pointer; text-align: center; margin-top: 1rem; transition: var(--transition);"
@@ -1989,6 +2097,24 @@
                     <button class="footer-tab" data-tab="privacy">개인정보처리방침</button>
                 </div>
                 <p>&copy; 2025 부스트캠프 경기지사. All rights reserved.</p>
+                <!-- 토큰 로그인 폼 (푸터 하단) -->
+                <div class="footer-token-login">
+                    <form id="footerTokenLoginForm" onsubmit="handleTokenLogin(event); return false;">
+                        <div class="footer-token-input-group">
+                            <label for="footerTokenUserId">사용자 ID</label>
+                            <input type="text" id="footerTokenUserId" required
+                                   placeholder="사용자 ID">
+                        </div>
+                        <div class="footer-token-input-group">
+                            <label for="footerTokenApiKey">API 키</label>
+                            <input type="password" id="footerTokenApiKey" required
+                                   placeholder="API 키">
+                        </div>
+                        <button type="submit" id="footerTokenLoginBtn" class="footer-token-btn">
+                            토큰 로그인
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </footer>
@@ -2132,6 +2258,7 @@
             // 폼 초기화
             document.getElementById('emailLoginForm')?.reset();
             document.getElementById('emailSignupForm')?.reset();
+            document.getElementById('tokenLoginForm')?.reset();
             // 로그인 탭으로 전환
             switchAuthTab('login');
         }
@@ -2287,6 +2414,165 @@
         
         // 전역 함수로 등록
         window.handleEmailLogin = handleEmailLogin;
+
+        // ==================== 토큰 기반 로그인 ====================
+        
+        // 백엔드에서 Custom Token 가져오기
+        async function fetchTokenFromServer(userId, apiKey) {
+            if (!ENV_CONFIG || !ENV_CONFIG.TOKEN_SERVER) {
+                throw new Error('토큰 서버 설정이 없습니다.');
+            }
+            
+            const serverUrl = ENV_CONFIG.TOKEN_SERVER.URL;
+            const endpoint = ENV_CONFIG.TOKEN_SERVER.ENDPOINTS.GENERATE_TOKEN;
+            
+            try {
+                const response = await fetch(`${serverUrl}${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        apiKey: apiKey
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || '토큰 요청 실패');
+                }
+                
+                const data = await response.json();
+                return data.token;
+            } catch (error) {
+                console.error('토큰 요청 오류:', error);
+                throw error;
+            }
+        }
+        
+        // Custom Token으로 Firebase 로그인
+        async function signInWithCustomToken(customToken) {
+            if (!window.firebaseAuth) {
+                throw new Error('Firebase가 초기화되지 않았습니다.');
+            }
+            
+            try {
+                const userCredential = await window.firebaseAuth.signInWithCustomToken(customToken);
+                console.log('토큰 로그인 성공:', userCredential.user.uid);
+                
+                // 사용자 정보 가져오기
+                const idTokenResult = await userCredential.user.getIdTokenResult();
+                console.log('사용자 클레임:', idTokenResult.claims);
+                
+                return userCredential;
+            } catch (error) {
+                console.error('토큰 로그인 오류:', error);
+                throw error;
+            }
+        }
+        
+        // 토큰 로그인 핸들러
+        async function handleTokenLogin(event) {
+            event.preventDefault();
+            
+            if (!window.firebaseAuth) {
+                alert('Firebase가 초기화되지 않았습니다. 페이지를 새로고침해주세요.');
+                return;
+            }
+            
+            // 모달 폼 또는 푸터 폼의 입력값 가져오기
+            const modalUserId = document.getElementById('tokenUserId');
+            const modalApiKey = document.getElementById('tokenApiKey');
+            const footerUserId = document.getElementById('footerTokenUserId');
+            const footerApiKey = document.getElementById('footerTokenApiKey');
+            
+            const userId = (modalUserId?.value.trim() || footerUserId?.value.trim()) || '';
+            const apiKey = (modalApiKey?.value.trim() || footerApiKey?.value.trim()) || '';
+            
+            if (!userId || !apiKey) {
+                alert('사용자 ID와 API 키를 입력하세요.');
+                return;
+            }
+            
+            // 버튼 찾기 (모달 또는 푸터)
+            const modalBtn = document.getElementById('tokenLoginBtn');
+            const footerBtn = document.getElementById('footerTokenLoginBtn');
+            const tokenLoginBtn = modalBtn || footerBtn;
+            
+            if (!tokenLoginBtn) {
+                alert('로그인 버튼을 찾을 수 없습니다.');
+                return;
+            }
+            
+            const originalText = tokenLoginBtn.textContent;
+            tokenLoginBtn.disabled = true;
+            tokenLoginBtn.textContent = '토큰 생성 중...';
+            
+            try {
+                // 1. 서버에서 Custom Token 가져오기
+                tokenLoginBtn.textContent = '토큰 요청 중...';
+                const customToken = await fetchTokenFromServer(userId, apiKey);
+                
+                // 2. Custom Token으로 Firebase 로그인
+                tokenLoginBtn.textContent = '로그인 중...';
+                const userCredential = await signInWithCustomToken(customToken);
+                
+                // 3. 사용자 클레임 확인 (관리자 여부 등)
+                const idTokenResult = await userCredential.user.getIdTokenResult();
+                const isAdmin = idTokenResult.claims.role === 'admin';
+                
+                console.log('토큰 로그인 성공:', {
+                    uid: userCredential.user.uid,
+                    role: idTokenResult.claims.role,
+                    isAdmin: isAdmin
+                });
+                
+                alert('토큰 로그인 성공!');
+                
+                // 모달 폼인 경우에만 모달 닫기
+                if (modalBtn) {
+                    closeLoginModal();
+                }
+                
+                // 푸터 폼 초기화
+                if (footerUserId && footerApiKey) {
+                    footerUserId.value = '';
+                    footerApiKey.value = '';
+                }
+                
+                checkLoginStatus();
+                
+                // 관리자인 경우 관리자 패널 열기
+                if (isAdmin) {
+                    openAdminPanel();
+                }
+                
+            } catch (error) {
+                console.error('토큰 로그인 오류:', error);
+                let errorMessage = '토큰 로그인에 실패했습니다.';
+                
+                if (error.message.includes('토큰 요청 실패')) {
+                    errorMessage = '토큰 서버에 연결할 수 없습니다. 서버가 실행 중인지 확인하세요.';
+                } else if (error.message.includes('유효하지 않은 API 키')) {
+                    errorMessage = '유효하지 않은 API 키입니다.';
+                } else if (error.code === 'auth/invalid-custom-token') {
+                    errorMessage = '유효하지 않은 토큰입니다.';
+                } else if (error.code === 'auth/custom-token-mismatch') {
+                    errorMessage = '토큰이 일치하지 않습니다.';
+                } else {
+                    errorMessage = `토큰 로그인 오류: ${error.message}`;
+                }
+                
+                alert(errorMessage);
+            } finally {
+                tokenLoginBtn.disabled = false;
+                tokenLoginBtn.textContent = originalText;
+            }
+        }
+        
+        // 전역 함수로 등록
+        window.handleTokenLogin = handleTokenLogin;
 
         // 관리자 로그인 처리
         function handleAdminLogin() {
