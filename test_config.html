@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Config.js 로드 테스트</title>
+</head>
+<body>
+    <h1>Config.js 로드 테스트</h1>
+    <div id="result"></div>
+    
+    <script src="env/config.js" onerror="document.getElementById('result').innerHTML='❌ config.js 로드 실패'; console.error('config.js 로드 실패')"></script>
+    <script>
+        console.log('=== 테스트 시작 ===');
+        
+        setTimeout(function() {
+            const result = document.getElementById('result');
+            if (typeof ENV_CONFIG !== 'undefined') {
+                result.innerHTML = '✅ config.js 로드 성공!<br>ENV_CONFIG: ' + JSON.stringify(ENV_CONFIG, null, 2);
+                console.log('✅ ENV_CONFIG 로드 성공:', ENV_CONFIG);
+            } else {
+                result.innerHTML = '❌ ENV_CONFIG가 정의되지 않았습니다.<br>config.js 파일이 로드되지 않았습니다.';
+                console.error('❌ ENV_CONFIG가 정의되지 않았습니다.');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
+

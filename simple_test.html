@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>간단 테스트</title>
+    <script>
+        console.log('=== 간단 테스트 페이지 로드됨 ===');
+        console.log('현재 시간:', new Date().toISOString());
+        console.log('URL:', window.location.href);
+    </script>
+</head>
+<body style="background: #0f1422; color: white; padding: 2rem;">
+    <h1>간단 테스트 페이지</h1>
+    <p>이 페이지가 보인다면 HTML은 정상적으로 로드된 것입니다.</p>
+    <p>콘솔을 확인하세요 (F12).</p>
+    
+    <h2>config.js 로드 테스트</h2>
+    <div id="configResult">로딩 중...</div>
+    
+    <script src="env/config.js" onerror="document.getElementById('configResult').innerHTML='❌ config.js 로드 실패'; console.error('config.js 로드 실패')"></script>
+    <script>
+        setTimeout(function() {
+            const result = document.getElementById('configResult');
+            if (typeof ENV_CONFIG !== 'undefined') {
+                result.innerHTML = '✅ config.js 로드 성공!<br><pre>' + JSON.stringify(ENV_CONFIG, null, 2) + '</pre>';
+                result.style.color = 'green';
+                console.log('✅ ENV_CONFIG:', ENV_CONFIG);
+            } else {
+                result.innerHTML = '❌ ENV_CONFIG가 정의되지 않았습니다.<br>config.js 파일이 로드되지 않았습니다.';
+                result.style.color = 'red';
+                console.error('❌ ENV_CONFIG가 정의되지 않았습니다.');
+            }
+        }, 500);
+    </script>
+</body>
+</html>
+

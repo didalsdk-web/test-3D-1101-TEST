@@ -1,0 +1,3799 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boostcamp - 디지털 경험을 창조하는 에이전시</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0f1422;
+            --bg-darker: #0a0e1a;
+            --bg-card: #1a1f35;
+            --primary-blue: #60a5fa;
+            --primary-blue-bright: #3b82f6;
+            --primary-purple: #a78bfa;
+            --text-white: #ffffff;
+            --text-gray: #9ca3af;
+            --text-light-gray: #d1d5db;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* 기본 스타일 강제 적용 */
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #0f1422 !important;
+            background-color: #0f1422 !important;
+            color: #ffffff !important;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 20, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.25rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-white);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn-contact {
+            padding: 0.625rem 1.5rem;
+            background: var(--primary-blue-bright);
+            color: var(--text-white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-contact:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            background: linear-gradient(135deg, #0f1422 0%, #1a1f35 50%, #0a0e1a 100%);
+            overflow: hidden;
+        }
+        
+        /* Hero 내부 모든 요소 중앙 정렬 */
+        .hero > * {
+            width: 100%;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-white);
+            letter-spacing: -1px;
+        }
+        
+        /* 에이전시가 줄바꿈되지 않도록 */
+        .hero h1 .gradient-text-2 {
+            white-space: nowrap;
+        }
+        
+        /* 에이전시 전체를 하나로 묶기 */
+        .hero h1 span:last-child {
+            white-space: nowrap;
+        }
+
+        .hero h1 .gradient-text-1 {
+            background: linear-gradient(135deg, var(--primary-blue), #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .gradient-text-2 {
+            background: linear-gradient(135deg, var(--primary-purple), #c4b5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light-gray);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 5rem;
+        }
+
+        .btn-primary-hero {
+            padding: 1rem 2.5rem;
+            background: var(--primary-blue-bright);
+            color: var(--text-white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary-hero:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary-hero {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--text-white);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary-hero:hover {
+            background: var(--text-white);
+            color: var(--bg-dark);
+        }
+
+        /* Stats in Hero */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 4rem auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            display: block;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-purple);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 375px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .project-image img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .project-image.ecommerce {
+            background: #ffffff;
+        }
+
+        .project-image.banking {
+            background: #ffffff;
+        }
+
+        .project-image.branding {
+            background: #ffffff;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tag {
+            padding: 0.375rem 0.875rem;
+            background: rgba(96, 165, 250, 0.2);
+            color: var(--primary-blue);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1400px) {
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.2);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .team-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card .role {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .contact-info a:hover .contact-card {
+            cursor: pointer;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: var(--transition);
+            cursor: default;
+        }
+
+        /* 이메일 카드는 호버 효과 없음 (링크가 아님) */
+        .contact-info > .contact-card:first-child:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: none;
+        }
+
+        /* 다른 카드들(오피스 등)은 호버 효과 유지 */
+        .contact-info a .contact-card:hover,
+        .contact-info a.contact-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .contact-card a,
+        a.contact-card {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a.contact-card:hover {
+            color: inherit;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius);
+            background: var(--primary-blue-bright);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .contact-details h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-gray);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-blue-bright);
+            color: var(--text-white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-end;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-blue-bright);
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer-info-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .footer-info-label {
+            color: var(--text-light-gray);
+            font-weight: 500;
+            min-width: 100px;
+        }
+
+        .footer-info-value {
+            color: var(--text-gray);
+        }
+
+        .footer-info-divider {
+            margin: 0 0.5rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-tabs {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-tab {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .footer-tab:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            background: rgba(96, 165, 250, 0.1);
+            font-weight: 700;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+        }
+
+        .modal-body {
+            color: var(--text-light-gray);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .modal-body h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Profile Modal Styles */
+        .profile-modal-content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .profile-modal-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin: 0 auto 2rem;
+            box-shadow: 0 8px 24px rgba(96, 165, 250, 0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-modal-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-modal-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .profile-modal-role {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .profile-modal-info {
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 2rem;
+        }
+
+        .profile-modal-info h4 {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .profile-modal-info p {
+            color: var(--text-light-gray);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .team-card {
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.125rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.875rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .projects-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .footer-left {
+                min-width: 100%;
+            }
+
+            .footer-right {
+                align-items: center;
+                width: 100%;
+            }
+
+            .footer-info {
+                font-size: 0.8rem;
+            }
+
+            .footer-info-label {
+                min-width: 90px;
+            }
+
+            .footer-tabs {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .footer-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .service-card,
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .modal-content {
+                padding: 2rem 1.5rem;
+                max-height: 95vh;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .modal-body {
+                font-size: 0.9rem;
+            }
+
+            .modal-body h3 {
+                font-size: 1.25rem;
+            }
+        }
+        /* Login Modal Styles */
+        .login-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .login-modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .login-modal-content {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            max-width: 450px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+        }
+
+        .login-modal-content h2 {
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        
+        .auth-tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+        
+        .auth-tab-btn.active {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
+        
+        .auth-tab-btn:hover {
+            color: var(--text-white);
+        }
+        
+        .auth-form {
+            text-align: left;
+        }
+
+        .google-login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #fff;
+            color: #333;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .google-login-btn:hover {
+            background: #f5f5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .google-login-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-login, .btn-logout {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .btn-login:hover, .btn-logout:hover {
+            background: var(--primary-blue-bright);
+            transform: translateY(-2px);
+        }
+
+        .btn-customer-management {
+            background: var(--primary-purple);
+            color: var(--text-white);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-customer-management:hover {
+            background: #8b6cf5;
+            transform: translateY(-2px);
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 2500;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
+            background: var(--bg-card);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-header h1 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            background: var(--bg-card);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-tab {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .admin-tab:hover,
+        .admin-tab.active {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            border-color: var(--primary-blue);
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        .customer-table {
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .customer-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .customer-table th,
+        .customer-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .customer-table th {
+            background: var(--bg-darker);
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .customer-table td {
+            color: var(--text-gray);
+        }
+
+        .customer-table tr:hover {
+            background: rgba(96, 165, 250, 0.1);
+        }
+
+        .message-content {
+            max-width: 500px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.5;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+
+        /* 페이지네이션 스타일 */
+        .pagination-btn {
+            padding: 0.5rem 0.75rem;
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .pagination-btn:hover:not(.disabled):not(.active) {
+            background: rgba(96, 165, 250, 0.1);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .pagination-btn.active {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            color: var(--text-white);
+        }
+
+        .pagination-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 반응형 디자인 개선 */
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .admin-tabs {
+                padding: 1rem;
+                overflow-x: auto;
+            }
+
+            .admin-content {
+                padding: 1rem;
+            }
+
+            .admin-controls {
+                flex-direction: column;
+            }
+
+            .admin-controls > div,
+            .admin-controls > select,
+            .admin-controls > button {
+                width: 100%;
+            }
+
+            .customer-table {
+                overflow-x: auto;
+            }
+
+            .customer-table table {
+                min-width: 800px;
+            }
+
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .customer-table th,
+            .customer-table td {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .customer-table td {
+                white-space: nowrap;
+            }
+
+            .message-content {
+                max-width: 200px;
+                white-space: normal;
+            }
+        }
+    </style>
+    <!-- 환경 변수 설정 파일 -->
+    <script>
+        console.log('=== config.js 로드 시작 ===');
+    </script>
+    <script src="env/config.js" onload="console.log('✅ config.js 로드 완료'); console.log('ENV_CONFIG:', typeof ENV_CONFIG !== 'undefined' ? '로드됨' : 'undefined');" onerror="console.error('❌ config.js 로드 실패')"></script>
+    <script>
+        console.log('=== config.js 로드 후 즉시 확인 ===');
+        console.log('ENV_CONFIG:', typeof ENV_CONFIG !== 'undefined' ? '로드됨' : 'undefined');
+    </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js" defer onerror="console.error('Firebase SDK 로드 실패')"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js" defer onerror="console.error('Firebase Auth SDK 로드 실패')"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js" defer onerror="console.error('Firestore SDK 로드 실패')"></script>
+    <script>
+        // 초기 디버깅 - defer 없이 즉시 실행
+        console.log('=== HEAD 스크립트 시작 ===');
+        console.log('페이지 로드 시작');
+        console.log('현재 프로토콜:', window.location.protocol);
+        console.log('현재 URL:', window.location.href);
+        console.log('document.readyState:', document.readyState);
+    </script>
+</head>
+<body style="background: #0f1422; color: #ffffff;">
+    <noscript>
+        <div style="padding: 2rem; text-align: center; color: red;">
+            JavaScript가 비활성화되어 있습니다. JavaScript를 활성화해주세요.
+        </div>
+    </noscript>
+    <!-- 로딩 인디케이터는 나중에 숨김 -->
+    <div id="loadingIndicator" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 2rem; background: rgba(0,0,0,0.8); border-radius: 12px; z-index: 9999; color: white; display: none;">
+        페이지를 불러오는 중...
+    </div>
+    
+    <!-- 기본 콘텐츠 표시 확인용 -->
+    <div style="position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: 4px; font-size: 0.8rem; z-index: 10000; display: none;" id="debugInfo">
+        Debug Info
+    </div>
+    <script>
+        // 즉시 실행 - defer 없이
+        console.log('=== 스크립트 즉시 실행 시작 ===');
+        console.log('현재 시간:', new Date().toISOString());
+        console.log('document.readyState:', document.readyState);
+        console.log('window.location:', window.location.href);
+        
+        // body 시작 디버깅
+        console.log('body 시작');
+        
+        // 즉시 body 스타일 적용
+        if (document.body) {
+            document.body.style.background = '#0f1422';
+            document.body.style.backgroundColor = '#0f1422';
+            document.body.style.color = '#ffffff';
+            console.log('Body 스타일 즉시 적용됨');
+        }
+        
+        // DOMContentLoaded 이벤트 리스너
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOMContentLoaded 이벤트 발생');
+                initPage();
+            });
+        } else {
+            // 이미 로드된 경우 즉시 실행
+            console.log('DOM이 이미 로드됨, 즉시 실행');
+            initPage();
+        }
+        
+        // window load 이벤트
+        window.addEventListener('load', function() {
+            console.log('window load 이벤트 발생');
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) {
+                loading.style.display = 'none';
+                console.log('로딩 인디케이터 제거됨 (load 이벤트)');
+            }
+        });
+        
+        // 페이지 초기화 함수
+        function initPage() {
+            console.log('=== 페이지 초기화 시작 ===');
+            const body = document.body;
+            console.log('Body 존재:', !!body);
+            console.log('Body children count:', body ? body.children.length : 0);
+            
+            // body에 직접 스타일 강제 적용
+            if (body) {
+                body.style.background = '#0f1422';
+                body.style.backgroundColor = '#0f1422';
+                body.style.color = '#ffffff';
+                console.log('Body 스타일 강제 적용됨');
+            }
+            
+            // 네비게이션바 확인
+            const navbar = document.querySelector('.navbar');
+            if (navbar) {
+                console.log('네비게이션바 발견:', navbar);
+                navbar.style.display = 'block';
+            } else {
+                console.error('네비게이션바를 찾을 수 없습니다!');
+            }
+            
+            // Hero 섹션 확인
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                console.log('Hero 섹션 발견:', hero);
+                hero.style.display = 'block';
+            } else {
+                console.error('Hero 섹션을 찾을 수 없습니다!');
+            }
+            
+            // 로딩 인디케이터 제거
+            const loading = document.getElementById('loadingIndicator');
+            if (loading) {
+                loading.style.display = 'none';
+                console.log('로딩 인디케이터 제거됨');
+            }
+            
+            console.log('=== 페이지 초기화 완료 ===');
+        }
+    </script>
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal-overlay">
+        <div class="login-modal-content">
+            <button id="closeLoginModal" style="position: absolute; top: 1rem; right: 1rem; background: transparent; border: none; color: var(--text-gray); cursor: pointer; font-size: 1.5rem; line-height: 1;">&times;</button>
+            
+            <!-- 탭 버튼 -->
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                <button id="loginTabBtn" class="auth-tab-btn active" onclick="switchAuthTab('login')">로그인</button>
+                <button id="signupTabBtn" class="auth-tab-btn" onclick="switchAuthTab('signup')">회원가입</button>
+            </div>
+            
+            <!-- 로그인 폼 -->
+            <div id="loginForm" class="auth-form">
+                <h2 style="margin-bottom: 1rem;">로그인</h2>
+                <form id="emailLoginForm" onsubmit="handleEmailLogin(event); return false;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">이메일</label>
+                        <input type="email" id="loginEmail" required
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                               placeholder="이메일을 입력하세요">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">비밀번호</label>
+                        <input type="password" id="loginPassword" required
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                               placeholder="비밀번호를 입력하세요">
+                    </div>
+                    <button type="submit" id="emailLoginBtn" 
+                            style="width: 100%; padding: 0.75rem; background: var(--primary-blue); color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">
+                        로그인
+                    </button>
+                </form>
+                
+                <div style="text-align: center; margin: 1.5rem 0; color: var(--text-gray); position: relative;">
+                    <span style="background: var(--bg-darker); padding: 0 1rem; position: relative; z-index: 1;">또는</span>
+                    <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); z-index: 0;"></div>
+                </div>
+                
+                <button id="googleLoginBtn" class="google-login-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                    Google로 로그인
+                </button>
+                
+                <button id="adminLoginBtn" 
+                        style="width: 100%; padding: 0.75rem; background: transparent; border: none; color: var(--text-gray); font-size: 0.9rem; cursor: pointer; text-align: center; margin-top: 1rem; transition: var(--transition);"
+                        onmouseover="this.style.color='var(--text-white)'" 
+                        onmouseout="this.style.color='var(--text-gray)'">
+                    관리자 로그인
+                </button>
+            </div>
+            
+            <!-- 회원가입 폼 -->
+            <div id="signupForm" class="auth-form" style="display: none;">
+                <h2 style="margin-bottom: 1rem;">회원가입</h2>
+                <form id="emailSignupForm" onsubmit="handleSignup(event); return false;">
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">이메일</label>
+                        <input type="email" id="signupEmail" required
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                               placeholder="이메일을 입력하세요">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">비밀번호</label>
+                        <input type="password" id="signupPassword" required minlength="6"
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                               placeholder="비밀번호 (6자 이상)">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; color: var(--text-gray); margin-bottom: 0.5rem; font-size: 0.9rem;">비밀번호 확인</label>
+                        <input type="password" id="signupPasswordConfirm" required
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 1rem;"
+                               placeholder="비밀번호를 다시 입력하세요">
+                    </div>
+                    <button type="submit" id="emailSignupBtn" 
+                            style="width: 100%; padding: 0.75rem; background: var(--primary-purple); color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; font-size: 1rem; margin-bottom: 1rem;">
+                        회원가입
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-header">
+            <h1>관리자 대시보드</h1>
+            <button id="closeAdminPanel" class="btn-logout">닫기</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="customers">고객 DB</button>
+        </div>
+        <div class="admin-content">
+            <div id="customersTab" class="admin-tab-content">
+                <!-- 고객 DB 컨트롤 -->
+                <div class="admin-controls" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <input type="text" id="customerSearch" placeholder="이름, 연락처 또는 이메일로 검색..." 
+                               style="width: 100%; padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); font-size: 0.9rem;">
+                    </div>
+                    <select id="sortBy" style="padding: 0.75rem; background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); color: var(--text-white); cursor: pointer;">
+                        <option value="date-desc">최신순</option>
+                        <option value="date-asc">과거순</option>
+                        <option value="name-asc">이름 가나다순</option>
+                        <option value="name-desc">이름 역순</option>
+                    </select>
+                    <button id="exportCSVBtn" style="padding: 0.75rem 1.5rem; background: var(--primary-blue); color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: var(--transition);">
+                        CSV 내보내기
+                    </button>
+                    <button id="deleteAllBtn" style="padding: 0.75rem 1.5rem; background: #ef4444; color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: var(--transition);">
+                        전체 삭제
+                    </button>
+                </div>
+
+                <!-- 통계 카드 -->
+                <div class="stats-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="stat-card" style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem;">전체 고객</div>
+                        <div id="totalCustomers" style="color: var(--text-white); font-size: 2rem; font-weight: 700;">0</div>
+                    </div>
+                    <div class="stat-card" style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem;">오늘 메시지</div>
+                        <div id="todayMessages" style="color: var(--text-white); font-size: 2rem; font-weight: 700;">0</div>
+                    </div>
+                    <div class="stat-card" style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div style="color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem;">이번 달</div>
+                        <div id="monthMessages" style="color: var(--text-white); font-size: 2rem; font-weight: 700;">0</div>
+                    </div>
+                </div>
+
+                <div class="customer-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;">순번</th>
+                                <th>이름</th>
+                                <th>연락처</th>
+                                <th>이메일</th>
+                                <th>메시지 내용</th>
+                                <th>날짜</th>
+                                <th>관리</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTableBody">
+                            <tr>
+                                <td colspan="7" style="text-align: center; color: var(--text-gray); padding: 2rem;">
+                                    데이터가 없습니다
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- 페이지네이션 -->
+                <div id="pagination" style="margin-top: 2rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                    <!-- 페이지네이션 버튼들이 여기에 동적으로 생성됩니다 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Detail Modal -->
+    <div id="customerDetailModal" class="login-modal-overlay">
+        <div class="login-modal-content" style="max-width: 600px; text-align: left;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 style="margin: 0;">고객 상세 정보</h2>
+                <button id="closeDetailModal" style="background: transparent; border: none; color: var(--text-gray); cursor: pointer; font-size: 1.5rem;">&times;</button>
+            </div>
+            <div id="customerDetailContent" style="color: var(--text-gray);">
+                <!-- 내용이 여기에 동적으로 로드됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Boostcamp</div>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact" class="btn-contact">Contact</a></li>
+                <li><a href="#" id="customerManagementBtn" class="btn-customer-management" style="display: none;">고객관리</a></li>
+                <li><button id="loginBtn" class="btn-login">로그인</button></li>
+                <li><button id="logoutBtn" class="btn-logout" style="display: none;">로그아웃</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                <span class="gradient-text-1">디지털</span> 
+                <span class="gradient-text-2">경험을</span> 
+                창조하는 <span class="gradient-text-2" style="white-space: nowrap;">에이전시</span>
+            </h1>
+            <p class="subtitle">혁신적인 웹 솔루션으로 비즈니스의 성장을 가속화합니다</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-primary-hero">프로젝트 보기 →</a>
+                <a href="#contact" class="btn-secondary-hero">문의하기</a>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number" id="projectCount">150</span><span>+</span>
+                <span class="stat-label">완료된 프로젝트</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="customerCount">50</span><span>+</span>
+                <span class="stat-label">만족한 고객</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5년</span>
+                <span class="stat-label">업계 경험</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">고객 지원</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="visitorCount">1</span>
+                <span class="stat-label">방문객</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-title scroll-animate">
+            <h2>우리의 서비스</h2>
+            <p>전문적이고 창의적인 솔루션으로 고객의 비전을 실현합니다</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card scroll-animate">
+                <span class="service-icon">&lt; / &gt;</span>
+                <h3>웹 개발</h3>
+                <p>최신 기술 스택으로 빠르고 안정적인 웹사이트를 제작합니다.</p>
+            </div>
+            <div class="service-card scroll-animate">
+                <span class="service-icon">📱</span>
+                <h3>모바일 앱</h3>
+                <p>iOS와 Android를 위한 직관적인 모바일 애플리케이션을 개발합니다.</p>
+            </div>
+            <div class="service-card scroll-animate">
+                <span class="service-icon">🎨</span>
+                <h3>UI/UX 디자인</h3>
+                <p>사용자 중심의 아름답고 효율적인 인터페이스를 디자인합니다.</p>
+            </div>
+            <div class="service-card scroll-animate">
+                <span class="service-icon">📢</span>
+                <h3>디지털 마케팅</h3>
+                <p>데이터 기반 전략으로 브랜드의 온라인 존재감을 강화합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="section-title scroll-animate">
+            <h2>우리의 프로젝트</h2>
+            <p>다양한 산업 분야에서 성공적으로 완료한 프로젝트들을 확인하세요</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card scroll-animate">
+                <div class="project-image ecommerce">
+                    <img src="POPOL1.png" alt="E-Commerce Platform">
+                </div>
+                <div class="project-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>현대적인 쇼핑 경험을 제공하는 반응형 온라인 스토어</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card scroll-animate">
+                <div class="project-image banking">
+                    <img src="POPOL2.png" alt="Mobile Banking App">
+                </div>
+                <div class="project-content">
+                    <h3>Mobile Banking App</h3>
+                    <p>직관적인 UI/UX의 모바일 뱅킹 애플리케이션</p>
+                    <div class="project-tags">
+                        <span class="tag">React Native</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Firebase</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card scroll-animate">
+                <div class="project-image branding">
+                    <img src="POPOL3.png" alt="Brand Identity System">
+                </div>
+                <div class="project-content">
+                    <h3>Brand Identity System</h3>
+                    <p>통일된 브랜드 경험을 위한 디자인 시스템</p>
+                    <div class="project-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">Design System</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="section-title scroll-animate">
+            <h2>우리 팀</h2>
+            <p>열정과 전문성을 가진 팀원들이 함께 만들어갑니다</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card scroll-animate" data-member="1">
+                <div class="team-avatar"><img src="sbj.png" alt="서배준"></div>
+                <h3>서배준</h3>
+                <p class="role">CEO & Founder</p>
+            </div>
+            <div class="team-card scroll-animate" data-member="2">
+                <div class="team-avatar"><img src="mina.jpg" alt="양민아"></div>
+                <h3>양민아</h3>
+                <p class="role">Lead Designer</p>
+            </div>
+            <div class="team-card scroll-animate" data-member="3">
+                <div class="team-avatar"><img src="pkh.png" alt="박건휘"></div>
+                <h3>박건휘</h3>
+                <p class="role">Tech Lead</p>
+            </div>
+            <div class="team-card scroll-animate" data-member="4">
+                <div class="team-avatar"><img src="k.png" alt="김하은"></div>
+                <h3>김하은</h3>
+                <p class="role">Marketing Director</p>
+            </div>
+            <div class="team-card scroll-animate" data-member="5">
+                <div class="team-avatar"><img src="sjs.png" alt="성준성"></div>
+                <h3>성준성</h3>
+                <p class="role">Business Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="section-title scroll-animate">
+            <h2 style="background: linear-gradient(135deg, var(--primary-purple), #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">연락하기</h2>
+            <p>프로젝트에 대해 이야기를 나눠보세요</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card scroll-animate">
+                    <div class="contact-icon">✉</div>
+                    <div class="contact-details">
+                        <h4>이메일</h4>
+                        <p id="contactEmail">didalsdk@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-card scroll-animate">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>전화</h4>
+                        <p>+82 10-7562-8514</p>
+                    </div>
+                </div>
+                <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%95%95%EA%B5%AC%EC%A0%95%EB%A1%9C11%EA%B8%B8%2017%20%EB%AF%B8%EC%84%B1%201%EC%B0%A8%20/place/18848126?c=15.00,0,0,0,dh&isCorrectAnswer=true&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202511052158&locale=ko&svcName=map_pcv5&searchText=%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EC%95%95%EA%B5%AC%EC%A0%95%EB%A1%9C11%EA%B8%B8%2017%20%EB%AF%B8%EC%84%B1%201%EC%B0%A8%20" target="_blank" rel="noopener noreferrer" class="contact-card scroll-animate" style="text-decoration: none; display: block; cursor: pointer;">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>오피스</h4>
+                        <p>서울 강남구 압구정로11길 17 미성 1차 1004호</p>
+                    </div>
+                </a>
+            </div>
+            <div class="contact-form scroll-animate">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="홍길동" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone" placeholder="010-1234-5678">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">메시지</label>
+                        <textarea id="message" name="message" required>웹사이트 목표 : 회사 소개, 쇼핑몰, 정보 제공, 커뮤니티 등
+
+방문자층 : 연령대, 성별, 관심사
+
+사용자 경험 : 반응형, 직관성
+
+접속 환경 : 희망 도메인(.com, co.kr 등)
+
+운영 계획 : 제작 후 업데이트, 오류 수정, 보관 관리 및 유지 보수 희망 여부</textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">메시지 보내기</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">부스트캠프 경기지사</div>
+                <div class="footer-info">
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">사업자등록번호:</span>
+                        <span class="footer-info-value">7179-9109-00</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">통신판매등록번호:</span>
+                        <span class="footer-info-value">45697513</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">대표자명:</span>
+                        <span class="footer-info-value">서배준</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">연락처:</span>
+                        <span class="footer-info-value">010-2474-8514</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">이메일:</span>
+                        <span class="footer-info-value" id="footerEmail">didalsdk@gmail.com</span>
+                    </div>
+                    <div class="footer-info-item">
+                        <span class="footer-info-label">사업자 소재지:</span>
+                        <span class="footer-info-value">서울 강남구 압구정로11길 17 미성 1차 1004호</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-tabs">
+                    <button class="footer-tab" data-tab="home">홈</button>
+                    <button class="footer-tab" data-tab="company">회사소개</button>
+                    <button class="footer-tab" data-tab="terms">이용약관</button>
+                    <button class="footer-tab" data-tab="privacy">개인정보처리방침</button>
+                </div>
+                <p>&copy; 2025 부스트캠프 경기지사. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">제목</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                내용이 여기에 표시됩니다.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('=== 메인 스크립트 태그 시작 ===');
+        console.log('현재 ENV_CONFIG 상태:', typeof ENV_CONFIG !== 'undefined' ? '로드됨' : 'undefined');
+        
+        // ENV_CONFIG 로드 대기 후 실행
+        function waitForConfig(callback, maxAttempts = 50) {
+            console.log('waitForConfig 함수 호출됨');
+            let attempts = 0;
+            const checkConfig = () => {
+                attempts++;
+                console.log(`ENV_CONFIG 확인 시도 ${attempts}/${maxAttempts}:`, typeof ENV_CONFIG !== 'undefined' ? '로드됨' : 'undefined');
+                
+                if (typeof ENV_CONFIG !== 'undefined') {
+                    console.log('✅ ENV_CONFIG 발견!');
+                    callback();
+                } else if (attempts < maxAttempts) {
+                    setTimeout(checkConfig, 100);
+                } else {
+                    console.error('❌ ENV_CONFIG가 로드되지 않았습니다. (타임아웃)');
+                    callback(); // 그래도 계속 진행
+                }
+            };
+            checkConfig();
+        }
+        
+        waitForConfig(function() {
+            // 초기화 확인
+            console.log('=== 메인 스크립트 시작 ===');
+            console.log('현재 시간:', new Date().toISOString());
+            
+            // ENV_CONFIG 로드 확인 (상세)
+            if (typeof ENV_CONFIG !== 'undefined') {
+                console.log('✅ ENV_CONFIG 로드 성공!');
+                console.log('ENV_CONFIG 내용:', ENV_CONFIG);
+                console.log('RECIPIENT_EMAIL:', ENV_CONFIG.RECIPIENT_EMAIL);
+                console.log('FIREBASE 설정 존재:', !!ENV_CONFIG.FIREBASE);
+                console.log('ADMIN 설정 존재:', !!ENV_CONFIG.ADMIN);
+            } else {
+                console.error('❌ ENV_CONFIG가 정의되지 않았습니다!');
+                console.error('env/config.js 파일이 로드되지 않았습니다.');
+                console.error('확인 방법:');
+                console.error('1. Network 탭에서 config.js 파일 확인');
+                console.error('2. http://localhost:8000/env/config.js 직접 접속');
+            }
+            
+            // firebase 로드 확인
+            if (typeof firebase !== 'undefined') {
+                console.log('✅ Firebase SDK 로드 성공!');
+            } else {
+                console.warn('⚠️ Firebase가 로드되지 않았습니다. Firebase SDK를 확인하세요.');
+            }
+        });
+        
+        // ==================== 로그인 및 관리자 기능 ====================
+        
+        // 관리자 로그인 상태 확인
+        function isAdminLoggedIn() {
+            const adminStatus = sessionStorage.getItem('isAdminLoggedIn') === 'true';
+            return adminStatus;
+        }
+        
+        // 관리자 권한 확인
+        function checkAdminPermission() {
+            if (!isAdminLoggedIn()) {
+                alert('관리자 권한이 필요합니다. 관리자 로그인을 해주세요.');
+                openLoginModal();
+                return false;
+            }
+            return true;
+        }
+        
+        // 로그인 상태 확인
+        function checkLoginStatus() {
+            let isLoggedIn = false;
+            let userEmail = '';
+            let userName = '';
+            const isAdmin = isAdminLoggedIn();
+            
+            // Firebase Auth 상태 확인
+            if (window.firebaseAuth) {
+                const currentUser = window.firebaseAuth.currentUser;
+                if (currentUser) {
+                    isLoggedIn = true;
+                    userEmail = currentUser.email || '';
+                    userName = currentUser.displayName || '관리자';
+                }
+            }
+            
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const customerManagementBtn = document.getElementById('customerManagementBtn');
+            
+            // 관리자 또는 Firebase 로그인 상태
+            if (isAdmin || isLoggedIn) {
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'block';
+                // 관리자만 고객관리 버튼 표시
+                if (customerManagementBtn && isAdmin) {
+                    customerManagementBtn.style.display = 'block';
+                } else if (customerManagementBtn) {
+                    customerManagementBtn.style.display = 'none';
+                }
+            } else {
+                loginBtn.style.display = 'block';
+                logoutBtn.style.display = 'none';
+                if (customerManagementBtn) {
+                    customerManagementBtn.style.display = 'none';
+                }
+            }
+        }
+
+        // 로그인 모달 열기
+        function openLoginModal() {
+            const loginModal = document.getElementById('loginModal');
+            loginModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 로그인 모달 닫기
+        function closeLoginModal() {
+            const loginModal = document.getElementById('loginModal');
+            loginModal.classList.remove('active');
+            document.body.style.overflow = '';
+            // 폼 초기화
+            document.getElementById('emailLoginForm')?.reset();
+            document.getElementById('emailSignupForm')?.reset();
+            // 로그인 탭으로 전환
+            switchAuthTab('login');
+        }
+
+        // 인증 탭 전환
+        function switchAuthTab(tab) {
+            const loginTabBtn = document.getElementById('loginTabBtn');
+            const signupTabBtn = document.getElementById('signupTabBtn');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            
+            if (tab === 'login') {
+                loginTabBtn.classList.add('active');
+                signupTabBtn.classList.remove('active');
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            } else {
+                loginTabBtn.classList.remove('active');
+                signupTabBtn.classList.add('active');
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+            }
+        }
+        
+        // 전역 함수로 등록
+        window.switchAuthTab = switchAuthTab;
+
+        // 이메일/비밀번호 회원가입
+        async function handleSignup(event) {
+            event.preventDefault();
+            
+            if (!window.firebaseAuth) {
+                alert('Firebase가 초기화되지 않았습니다. 페이지를 새로고침해주세요.');
+                return;
+            }
+            
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const passwordConfirm = document.getElementById('signupPasswordConfirm').value;
+            
+            // 유효성 검사
+            if (password !== passwordConfirm) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+            
+            if (password.length < 6) {
+                alert('비밀번호는 6자 이상이어야 합니다.');
+                return;
+            }
+            
+            const signupBtn = document.getElementById('emailSignupBtn');
+            const originalText = signupBtn.textContent;
+            signupBtn.disabled = true;
+            signupBtn.textContent = '회원가입 중...';
+            
+            try {
+                const userCredential = await window.firebaseAuth.createUserWithEmailAndPassword(email, password);
+                console.log('회원가입 성공:', userCredential.user.email);
+                
+                alert('회원가입이 완료되었습니다!');
+                closeLoginModal();
+                checkLoginStatus();
+                // 일반 사용자는 관리자 패널에 접근 불가
+                // openAdminPanel(); // 관리자만 접근 가능하도록 주석 처리
+            } catch (error) {
+                console.error('회원가입 오류:', error);
+                let errorMessage = '회원가입에 실패했습니다.';
+                
+                switch(error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = '이미 사용 중인 이메일입니다.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = '올바른 이메일 형식이 아닙니다.';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = '비밀번호가 너무 약합니다.';
+                        break;
+                    case 'auth/network-request-failed':
+                        errorMessage = '네트워크 오류가 발생했습니다.';
+                        break;
+                    default:
+                        errorMessage = `회원가입 오류: ${error.message}`;
+                }
+                
+                alert(errorMessage);
+            } finally {
+                signupBtn.disabled = false;
+                signupBtn.textContent = originalText;
+            }
+        }
+        
+        // 전역 함수로 등록
+        window.handleSignup = handleSignup;
+
+        // 이메일/비밀번호 로그인
+        async function handleEmailLogin(event) {
+            event.preventDefault();
+            
+            if (!window.firebaseAuth) {
+                alert('Firebase가 초기화되지 않았습니다. 페이지를 새로고침해주세요.');
+                return;
+            }
+            
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            const loginBtn = document.getElementById('emailLoginBtn');
+            const originalText = loginBtn.textContent;
+            loginBtn.disabled = true;
+            loginBtn.textContent = '로그인 중...';
+            
+            try {
+                const userCredential = await window.firebaseAuth.signInWithEmailAndPassword(email, password);
+                console.log('로그인 성공:', userCredential.user.email);
+                
+                alert('로그인되었습니다!');
+                closeLoginModal();
+                checkLoginStatus();
+                // 일반 사용자는 관리자 패널에 접근 불가
+                // openAdminPanel(); // 관리자만 접근 가능하도록 주석 처리
+            } catch (error) {
+                console.error('로그인 오류:', error);
+                let errorMessage = '로그인에 실패했습니다.';
+                
+                switch(error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = '등록되지 않은 이메일입니다.';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = '비밀번호가 올바르지 않습니다.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = '올바른 이메일 형식이 아닙니다.';
+                        break;
+                    case 'auth/user-disabled':
+                        errorMessage = '사용이 중지된 계정입니다.';
+                        break;
+                    case 'auth/network-request-failed':
+                        errorMessage = '네트워크 오류가 발생했습니다.';
+                        break;
+                    default:
+                        errorMessage = `로그인 오류: ${error.message}`;
+                }
+                
+                alert(errorMessage);
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = originalText;
+            }
+        }
+        
+        // 전역 함수로 등록
+        window.handleEmailLogin = handleEmailLogin;
+
+        // 관리자 로그인 처리
+        function handleAdminLogin() {
+            const adminEmail = prompt('관리자 이메일을 입력하세요:');
+            if (!adminEmail) {
+                return;
+            }
+            
+            const adminPassword = prompt('관리자 비밀번호를 입력하세요:');
+            if (!adminPassword) {
+                return;
+            }
+            
+            // ENV_CONFIG에서 관리자 설정 확인
+            const adminConfig = typeof ENV_CONFIG !== 'undefined' && ENV_CONFIG.ADMIN ? ENV_CONFIG.ADMIN : null;
+            
+            if (!adminConfig) {
+                alert('관리자 설정이 없습니다.');
+                return;
+            }
+            
+            // 이메일 확인
+            const allowedEmails = adminConfig.ALLOWED_EMAILS || [];
+            const isEmailAllowed = allowedEmails.includes(adminEmail.trim());
+            
+            // 비밀번호 확인
+            const isPasswordCorrect = adminPassword === adminConfig.ADMIN_PASSWORD;
+            
+            if (isEmailAllowed && isPasswordCorrect) {
+                // 관리자 로그인 성공
+                sessionStorage.setItem('isAdminLoggedIn', 'true');
+                sessionStorage.setItem('adminEmail', adminEmail.trim());
+                
+                console.log('관리자 로그인 성공:', adminEmail);
+                alert('관리자로 로그인되었습니다.');
+                
+                closeLoginModal();
+                checkLoginStatus();
+                openAdminPanel();
+            } else {
+                alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+            }
+        }
+        
+        // 전역 함수로 등록
+        window.handleAdminLogin = handleAdminLogin;
+
+        // Firebase Google 로그인
+        function handleGoogleLogin() {
+            if (!window.firebaseAuth) {
+                alert('Firebase가 초기화되지 않았습니다. 페이지를 새로고침해주세요.');
+                return;
+            }
+            
+            // 프로토콜 확인
+            const protocol = window.location.protocol;
+            if (protocol === 'file:') {
+                alert('Firebase 인증은 HTTP 서버를 통해 접속해야 합니다.\n\n브라우저에서 http://localhost:8000 을 열어주세요.');
+                return;
+            }
+            
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            // 로딩 표시
+            const googleLoginBtn = document.getElementById('googleLoginBtn');
+            const originalText = googleLoginBtn.innerHTML;
+            googleLoginBtn.disabled = true;
+            googleLoginBtn.innerHTML = '로그인 중...';
+            
+            // 팝업 방식 시도, 실패 시 리다이렉트 방식 사용
+            window.firebaseAuth.signInWithPopup(provider)
+                .then((result) => {
+                    // 로그인 성공
+                    const user = result.user;
+                    console.log('로그인 성공:', user.email);
+                    
+                    alert('로그인되었습니다!');
+                    closeLoginModal();
+                    checkLoginStatus();
+                    // 일반 사용자는 관리자 패널에 접근 불가
+                    // openAdminPanel(); // 관리자만 접근 가능하도록 주석 처리
+                    
+                    googleLoginBtn.disabled = false;
+                    googleLoginBtn.innerHTML = originalText;
+                })
+                .catch((error) => {
+                    console.error('로그인 오류:', error);
+                    
+                    // 팝업이 지원되지 않는 환경이면 리다이렉트 방식 사용
+                    if (error.code === 'auth/operation-not-supported-in-this-environment' || 
+                        error.code === 'auth/popup-blocked') {
+                        console.log('팝업 방식 실패, 리다이렉트 방식으로 시도합니다.');
+                        window.firebaseAuth.signInWithRedirect(provider);
+                        return;
+                    }
+                    
+                    let errorMessage = '로그인에 실패했습니다.';
+                    
+                    switch(error.code) {
+                        case 'auth/popup-closed-by-user':
+                            errorMessage = '로그인 팝업이 닫혔습니다.';
+                            break;
+                        case 'auth/popup-blocked':
+                            errorMessage = '팝업이 차단되었습니다. 브라우저 설정을 확인해주세요.';
+                            break;
+                        case 'auth/network-request-failed':
+                            errorMessage = '네트워크 오류가 발생했습니다.';
+                            break;
+                        default:
+                            errorMessage = `로그인 오류: ${error.message}`;
+                    }
+                    
+                    alert(errorMessage);
+                    googleLoginBtn.disabled = false;
+                    googleLoginBtn.innerHTML = originalText;
+                });
+        }
+        
+        // 리다이렉트 로그인 결과 처리
+        function handleAuthRedirect() {
+            if (window.firebaseAuth) {
+                window.firebaseAuth.getRedirectResult()
+                    .then((result) => {
+                        if (result.user) {
+                            console.log('리다이렉트 로그인 성공:', result.user.email);
+                            checkLoginStatus();
+                            // 일반 사용자는 관리자 패널에 접근 불가
+                            // openAdminPanel(); // 관리자만 접근 가능하도록 주석 처리
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('리다이렉트 로그인 오류:', error);
+                    });
+            }
+        }
+
+        // 로그아웃
+        function handleLogout() {
+            // 관리자 로그아웃
+            if (isAdminLoggedIn()) {
+                sessionStorage.removeItem('isAdminLoggedIn');
+                sessionStorage.removeItem('adminEmail');
+                console.log('관리자 로그아웃');
+            }
+            
+            // Firebase 로그아웃
+            if (window.firebaseAuth) {
+                window.firebaseAuth.signOut()
+                    .then(() => {
+                        console.log('Firebase 로그아웃 성공');
+                        checkLoginStatus();
+                        closeAdminPanel();
+                    })
+                    .catch((error) => {
+                        console.error('로그아웃 오류:', error);
+                        alert('로그아웃 중 오류가 발생했습니다.');
+                    });
+            } else {
+                // Firebase가 없는 경우 기본 처리
+                checkLoginStatus();
+                closeAdminPanel();
+            }
+        }
+
+        // 관리자 화면 열기
+        function openAdminPanel() {
+            // 관리자 권한 확인
+            if (!checkAdminPermission()) {
+                return;
+            }
+            
+            const adminPanel = document.getElementById('adminPanel');
+            adminPanel.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // 강제 초기화: 검색 필터 초기화, 첫 페이지로 이동
+            currentFilter = '';
+            currentPage = 1;
+            currentSort = 'date-desc';
+            
+            // 검색 입력 필드 초기화
+            const customerSearch = document.getElementById('customerSearch');
+            if (customerSearch) {
+                customerSearch.value = '';
+            }
+            
+            // 정렬도 기본값으로 초기화
+            const sortBy = document.getElementById('sortBy');
+            if (sortBy) {
+                sortBy.value = 'date-desc';
+            }
+            
+            // 약간의 지연 후 데이터 로드 (DOM이 완전히 렌더링된 후)
+            setTimeout(() => {
+                loadCustomerData();
+            }, 100);
+        }
+
+        // 관리자 화면 닫기
+        function closeAdminPanel() {
+            const adminPanel = document.getElementById('adminPanel');
+            adminPanel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 고객 데이터 저장 (Firestore)
+        async function saveCustomerData(name, phone, email, message) {
+            if (!window.firebaseFirestore) {
+                console.warn('Firestore가 초기화되지 않았습니다. localStorage에 저장합니다.');
+                // Fallback: localStorage에 저장
+                let customers = JSON.parse(localStorage.getItem('customers') || '[]');
+                const customerData = {
+                    id: Date.now(),
+                    name: name,
+                    phone: phone || '',
+                    email: email,
+                    message: message,
+                    date: new Date().toLocaleString('ko-KR'),
+                    timestamp: new Date().toISOString()
+                };
+                customers.push(customerData);
+                localStorage.setItem('customers', JSON.stringify(customers));
+                return;
+            }
+            
+            try {
+                const customerData = {
+                    name: name,
+                    phone: phone || '',
+                    email: email,
+                    message: message,
+                    date: new Date().toLocaleString('ko-KR'),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                };
+                
+                await window.firebaseFirestore.collection('customers').add(customerData);
+                console.log('고객 데이터가 Firestore에 저장되었습니다.');
+            } catch (error) {
+                console.error('Firestore 저장 오류:', error);
+                // 오류 발생 시 localStorage에 저장 (Fallback)
+                let customers = JSON.parse(localStorage.getItem('customers') || '[]');
+                const customerData = {
+                    id: Date.now(),
+                    name: name,
+                    phone: phone || '',
+                    email: email,
+                    message: message,
+                    date: new Date().toLocaleString('ko-KR')
+                };
+                customers.push(customerData);
+                localStorage.setItem('customers', JSON.stringify(customers));
+            }
+        }
+
+        // 고객 데이터 필터링 및 정렬
+        let currentFilter = '';
+        let currentSort = 'date-desc';
+        let currentPage = 1;
+        const itemsPerPage = 20; // 페이지당 항목 수
+        
+        // Firestore에서 고객 데이터 가져오기
+        async function fetchCustomersFromFirestore() {
+            if (!window.firebaseFirestore) {
+                // Firestore가 없으면 localStorage에서 가져오기
+                return JSON.parse(localStorage.getItem('customers') || '[]');
+            }
+            
+            try {
+                let query = window.firebaseFirestore.collection('customers');
+                
+                // 정렬 적용
+                switch(currentSort) {
+                    case 'date-desc':
+                        query = query.orderBy('timestamp', 'desc');
+                        break;
+                    case 'date-asc':
+                        query = query.orderBy('timestamp', 'asc');
+                        break;
+                    case 'name-asc':
+                        query = query.orderBy('name', 'asc');
+                        break;
+                    case 'name-desc':
+                        query = query.orderBy('name', 'desc');
+                        break;
+                    default:
+                        query = query.orderBy('timestamp', 'desc');
+                }
+                
+                const snapshot = await query.get();
+                const customers = [];
+                
+                snapshot.forEach((doc) => {
+                    const data = doc.data();
+                    customers.push({
+                        id: doc.id,
+                        name: data.name || '',
+                        phone: data.phone || '',
+                        email: data.email || '',
+                        message: data.message || '',
+                        date: data.date || (data.timestamp ? new Date(data.timestamp.toDate()).toLocaleString('ko-KR') : ''),
+                        timestamp: data.timestamp ? data.timestamp.toDate() : new Date()
+                    });
+                });
+                
+                // 검색 필터 적용 (클라이언트 사이드)
+                if (currentFilter && currentFilter.trim() !== '') {
+                    const filterLower = currentFilter.trim().toLowerCase();
+                    return customers.filter(customer => 
+                        customer.name.toLowerCase().includes(filterLower) ||
+                        (customer.phone && customer.phone.toLowerCase().includes(filterLower)) ||
+                        customer.email.toLowerCase().includes(filterLower)
+                    );
+                }
+                
+                return customers;
+            } catch (error) {
+                console.error('Firestore 데이터 가져오기 오류:', error);
+                // 오류 발생 시 localStorage에서 가져오기
+                return JSON.parse(localStorage.getItem('customers') || '[]');
+            }
+        }
+        
+        async function filterAndSortCustomers() {
+            const customers = await fetchCustomersFromFirestore();
+            
+            // 정렬이 이름 기준인 경우 다시 정렬 (Firestore 쿼리에서 이미 정렬됨)
+            if (currentSort.startsWith('name-')) {
+                customers.sort((a, b) => {
+                    if (currentSort === 'name-asc') {
+                        return a.name.localeCompare(b.name, 'ko');
+                    } else {
+                        return b.name.localeCompare(a.name, 'ko');
+                    }
+                });
+            } else if (currentSort.startsWith('date-')) {
+                // 날짜 정렬은 이미 Firestore에서 처리됨
+                if (currentSort === 'date-asc') {
+                    customers.reverse();
+                }
+            }
+            
+            return customers;
+        }
+
+        // 고객 데이터 로드 및 표시
+        async function loadCustomerData() {
+            const tableBody = document.getElementById('customerTableBody');
+            
+            // 로딩 표시
+            tableBody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">데이터를 불러오는 중...</td></tr>';
+            
+            try {
+                // Firestore에서 데이터 가져오기
+                const rawCustomers = await fetchCustomersFromFirestore();
+                
+                // 필터링 및 정렬 적용
+                const allCustomers = await filterAndSortCustomers();
+                
+                // 통계 업데이트 (원본 데이터 사용)
+                updateStats(rawCustomers);
+                
+                // 전체 페이지 수 계산
+                const totalPages = Math.max(1, Math.ceil(allCustomers.length / itemsPerPage));
+                
+                // 현재 페이지가 유효한 범위인지 확인
+                if (currentPage > totalPages && totalPages > 0) {
+                    currentPage = totalPages;
+                }
+                
+                // 페이지네이션 적용
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const customers = allCustomers.slice(startIndex, endIndex);
+                
+                // 디버깅: 콘솔에 정보 출력
+                console.log('Raw customers:', rawCustomers.length);
+                console.log('Filtered customers:', allCustomers.length);
+                console.log('Current filter:', currentFilter);
+                console.log('Current page:', currentPage);
+                console.log('Total pages:', totalPages);
+                console.log('Displaying customers:', customers.length);
+                
+                if (allCustomers.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; color: var(--text-gray); padding: 2rem;">
+                                ${currentFilter && currentFilter.trim() ? '검색 결과가 없습니다' : '데이터가 없습니다'}
+                            </td>
+                        </tr>
+                    `;
+                    renderPagination(0, 1);
+                    return;
+                }
+            
+            // 순번 계산 (현재 페이지 기준)
+            const startNumber = (currentPage - 1) * itemsPerPage + 1;
+            
+            tableBody.innerHTML = customers.map((customer, index) => {
+                const rowNumber = startNumber + index;
+                return `
+                <tr>
+                    <td style="text-align: center; color: var(--text-gray); font-weight: 600;">${rowNumber}</td>
+                    <td>${escapeHtml(customer.name || '')}</td>
+                    <td>${escapeHtml(customer.phone || '-')}</td>
+                    <td>${escapeHtml(customer.email || '')}</td>
+                    <td class="message-content" style="max-width: 400px; white-space: pre-wrap; word-break: break-word;">${escapeHtml(customer.message || '')}</td>
+                    <td>${customer.date || ''}</td>
+                    <td style="display: flex; gap: 0.5rem;">
+                        <button onclick="viewCustomerDetail(${customer.id})" 
+                                style="padding: 0.5rem 1rem; background: var(--primary-blue); color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-size: 0.85rem;">
+                            상세
+                        </button>
+                        <button onclick="deleteCustomer(${customer.id})" 
+                                style="padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-size: 0.85rem;">
+                            삭제
+                        </button>
+                    </td>
+                </tr>
+            `;
+            }).join('');
+            
+                // 페이지네이션 렌더링
+                renderPagination(allCustomers.length, totalPages);
+            } catch (error) {
+                console.error('고객 데이터 로드 오류:', error);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: #ef4444; padding: 2rem;">
+                            데이터를 불러오는 중 오류가 발생했습니다.<br>
+                            ${error.message}
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // 페이지네이션 렌더링
+        function renderPagination(totalItems, totalPages) {
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // 이전 버튼
+            paginationHTML += `
+                <button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" 
+                        onclick="goToPage(${currentPage - 1})" 
+                        ${currentPage === 1 ? 'disabled' : ''}>
+                    이전
+                </button>
+            `;
+            
+            // 페이지 번호 버튼
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            if (startPage > 1) {
+                paginationHTML += `<button class="pagination-btn" onclick="goToPage(1)">1</button>`;
+                if (startPage > 2) {
+                    paginationHTML += `<span style="color: var(--text-gray); padding: 0 0.5rem;">...</span>`;
+                }
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                paginationHTML += `
+                    <button class="pagination-btn ${i === currentPage ? 'active' : ''}" 
+                            onclick="goToPage(${i})">
+                        ${i}
+                    </button>
+                `;
+            }
+            
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    paginationHTML += `<span style="color: var(--text-gray); padding: 0 0.5rem;">...</span>`;
+                }
+                paginationHTML += `<button class="pagination-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+            }
+            
+            // 다음 버튼
+            paginationHTML += `
+                <button class="pagination-btn ${currentPage === totalPages ? 'disabled' : ''}" 
+                        onclick="goToPage(${currentPage + 1})" 
+                        ${currentPage === totalPages ? 'disabled' : ''}>
+                    다음
+                </button>
+            `;
+            
+            // 총 항목 수 표시
+            paginationHTML += `
+                <span style="color: var(--text-gray); margin-left: 1rem; font-size: 0.9rem;">
+                    총 ${totalItems}개 (${currentPage}/${totalPages} 페이지)
+                </span>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+        }
+
+        // 페이지 이동
+        window.goToPage = async function(page) {
+            if (page < 1) return;
+            
+            const allCustomers = await filterAndSortCustomers();
+            const totalPages = Math.max(1, Math.ceil(allCustomers.length / itemsPerPage));
+            if (page > totalPages) return;
+            
+            currentPage = page;
+            loadCustomerData();
+            
+            // 페이지 상단으로 스크롤
+            const adminContent = document.querySelector('.admin-content');
+            if (adminContent) {
+                adminContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        // HTML 이스케이프 함수
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 통계 업데이트
+        function updateStats(customers = null) {
+            // customers가 제공되지 않으면 Firestore에서 가져오기
+            if (!customers) {
+                customers = JSON.parse(localStorage.getItem('customers') || '[]');
+            }
+            
+            const today = new Date().toDateString();
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            
+            // 전체 고객 수
+            document.getElementById('totalCustomers').textContent = customers.length;
+            
+            // 오늘 메시지 수
+            const todayMessages = customers.filter(customer => {
+                let customerDate;
+                if (customer.timestamp) {
+                    customerDate = customer.timestamp instanceof Date ? customer.timestamp : customer.timestamp.toDate();
+                } else if (customer.date) {
+                    customerDate = new Date(customer.date);
+                } else {
+                    return false;
+                }
+                return customerDate.toDateString() === today;
+            }).length;
+            document.getElementById('todayMessages').textContent = todayMessages;
+            
+            // 이번 달 메시지 수
+            const monthMessages = customers.filter(customer => {
+                let customerDate;
+                if (customer.timestamp) {
+                    customerDate = customer.timestamp instanceof Date ? customer.timestamp : customer.timestamp.toDate();
+                } else if (customer.date) {
+                    customerDate = new Date(customer.date);
+                } else {
+                    return false;
+                }
+                return customerDate.getMonth() === currentMonth && 
+                       customerDate.getFullYear() === currentYear;
+            }).length;
+            document.getElementById('monthMessages').textContent = monthMessages;
+        }
+
+        // 고객 삭제 (전역 함수로 등록)
+        window.deleteCustomer = async function(id) {
+            if (!confirm('이 고객 데이터를 삭제하시겠습니까?')) {
+                return;
+            }
+            
+            if (window.firebaseFirestore) {
+                try {
+                    await window.firebaseFirestore.collection('customers').doc(id).delete();
+                    console.log('고객 데이터가 Firestore에서 삭제되었습니다.');
+                    loadCustomerData();
+                } catch (error) {
+                    console.error('Firestore 삭제 오류:', error);
+                    alert('삭제 중 오류가 발생했습니다.');
+                }
+            } else {
+                // Fallback: localStorage
+                let customers = JSON.parse(localStorage.getItem('customers') || '[]');
+                customers = customers.filter(customer => customer.id !== id);
+                localStorage.setItem('customers', JSON.stringify(customers));
+                loadCustomerData();
+            }
+        };
+
+        // 전체 삭제
+        async function deleteAllCustomers() {
+            if (!confirm('모든 고객 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+                return;
+            }
+            
+            if (window.firebaseFirestore) {
+                try {
+                    const snapshot = await window.firebaseFirestore.collection('customers').get();
+                    const batch = window.firebaseFirestore.batch();
+                    
+                    snapshot.forEach((doc) => {
+                        batch.delete(doc.ref);
+                    });
+                    
+                    await batch.commit();
+                    console.log('모든 고객 데이터가 Firestore에서 삭제되었습니다.');
+                    loadCustomerData();
+                } catch (error) {
+                    console.error('Firestore 전체 삭제 오류:', error);
+                    alert('삭제 중 오류가 발생했습니다.');
+                }
+            } else {
+                // Fallback: localStorage
+                localStorage.removeItem('customers');
+                loadCustomerData();
+            }
+        }
+
+        // CSV 내보내기
+        function exportToCSV() {
+            const customers = JSON.parse(localStorage.getItem('customers') || '[]');
+            
+            if (customers.length === 0) {
+                alert('내보낼 데이터가 없습니다.');
+                return;
+            }
+            
+            // CSV 헤더
+            const headers = ['이름', '연락처', '이메일', '메시지 내용', '날짜'];
+            
+            // CSV 데이터 생성
+            const csvRows = [
+                headers.join(','),
+                ...customers.map(customer => [
+                    `"${customer.name.replace(/"/g, '""')}"`,
+                    `"${(customer.phone || '').replace(/"/g, '""')}"`,
+                    `"${customer.email.replace(/"/g, '""')}"`,
+                    `"${customer.message.replace(/"/g, '""').replace(/\n/g, ' ')}"`,
+                    `"${customer.date}"`
+                ].join(','))
+            ];
+            
+            const csvContent = csvRows.join('\n');
+            
+            // BOM 추가 (한글 깨짐 방지)
+            const BOM = '\uFEFF';
+            const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+            
+            // 다운로드 링크 생성
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `고객데이터_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // 고객 상세 보기
+        window.viewCustomerDetail = function(id) {
+            const customers = JSON.parse(localStorage.getItem('customers') || '[]');
+            const customer = customers.find(c => c.id === id);
+            
+            if (!customer) {
+                alert('고객 정보를 찾을 수 없습니다.');
+                return;
+            }
+            
+            const detailContent = document.getElementById('customerDetailContent');
+            detailContent.innerHTML = `
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--text-white); margin-bottom: 0.5rem;">이름</h3>
+                    <p style="color: var(--text-gray);">${escapeHtml(customer.name)}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--text-white); margin-bottom: 0.5rem;">연락처</h3>
+                    <p style="color: var(--text-gray);">${escapeHtml(customer.phone || '-')}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--text-white); margin-bottom: 0.5rem;">이메일</h3>
+                    <p style="color: var(--text-gray);">${escapeHtml(customer.email)}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--text-white); margin-bottom: 0.5rem;">날짜</h3>
+                    <p style="color: var(--text-gray);">${customer.date}</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--text-white); margin-bottom: 0.5rem;">메시지 내용</h3>
+                    <div style="background: var(--bg-darker); padding: 1rem; border-radius: var(--border-radius); border: 1px solid rgba(255, 255, 255, 0.1); white-space: pre-wrap; word-break: break-word; color: var(--text-gray); max-height: 400px; overflow-y: auto;">
+                        ${escapeHtml(customer.message)}
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button onclick="deleteCustomer(${customer.id}); closeCustomerDetailModal();" 
+                            style="padding: 0.75rem 1.5rem; background: #ef4444; color: white; border: none; border-radius: var(--border-radius); cursor: pointer; font-weight: 600;">
+                        삭제
+                    </button>
+                    <button onclick="closeCustomerDetailModal()" 
+                            style="padding: 0.75rem 1.5rem; background: var(--bg-card); color: var(--text-white); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: var(--border-radius); cursor: pointer; font-weight: 600;">
+                        닫기
+                    </button>
+                </div>
+            `;
+            
+            const modal = document.getElementById('customerDetailModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        };
+
+        // 상세 보기 모달 닫기
+        function closeCustomerDetailModal() {
+            const modal = document.getElementById('customerDetailModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        window.closeCustomerDetailModal = closeCustomerDetailModal;
+
+        // 이벤트 리스너 설정
+        document.addEventListener('DOMContentLoaded', function() {
+            // 리다이렉트 로그인 결과 처리
+            handleAuthRedirect();
+            
+            // Firebase Auth 상태 변경 감지
+            if (window.firebaseAuth) {
+                window.firebaseAuth.onAuthStateChanged((user) => {
+                    if (user) {
+                        console.log('사용자 로그인:', user.email);
+                        checkLoginStatus();
+                    } else {
+                        console.log('사용자 로그아웃');
+                        checkLoginStatus();
+                        closeAdminPanel();
+                    }
+                });
+            }
+            
+            // 초기 로그인 상태 확인
+            checkLoginStatus();
+            
+            // 로그인 버튼
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', openLoginModal);
+            }
+            
+            // 로그아웃 버튼
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+            
+            // 고객관리 버튼
+            const customerManagementBtn = document.getElementById('customerManagementBtn');
+            if (customerManagementBtn) {
+                customerManagementBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // 관리자 권한 확인 후 열기
+                    if (checkAdminPermission()) {
+                        openAdminPanel();
+                    }
+                });
+            }
+            
+            // 구글 로그인 버튼
+            const googleLoginBtn = document.getElementById('googleLoginBtn');
+            if (googleLoginBtn) {
+                googleLoginBtn.addEventListener('click', handleGoogleLogin);
+            }
+            
+            // 관리자 로그인 버튼
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            if (adminLoginBtn) {
+                adminLoginBtn.addEventListener('click', handleAdminLogin);
+            }
+            
+            // 로그인 모달 닫기
+            const closeLoginModalBtn = document.getElementById('closeLoginModal');
+            if (closeLoginModalBtn) {
+                closeLoginModalBtn.addEventListener('click', closeLoginModal);
+            }
+            
+            // 관리자 화면 닫기
+            const closeAdminPanelBtn = document.getElementById('closeAdminPanel');
+            if (closeAdminPanelBtn) {
+                closeAdminPanelBtn.addEventListener('click', closeAdminPanel);
+            }
+            
+            // 로그인 모달 외부 클릭 시 닫기
+            const loginModal = document.getElementById('loginModal');
+            if (loginModal) {
+                loginModal.addEventListener('click', function(e) {
+                    if (e.target === loginModal) {
+                        closeLoginModal();
+                    }
+                });
+            }
+            
+            // 고객 검색
+            const customerSearch = document.getElementById('customerSearch');
+            if (customerSearch) {
+                // 초기값 설정
+                customerSearch.value = '';
+                currentFilter = '';
+                
+                customerSearch.addEventListener('input', async function(e) {
+                    currentFilter = e.target.value.trim();
+                    currentPage = 1; // 검색 시 첫 페이지로
+                    await loadCustomerData();
+                });
+            }
+            
+            // 정렬 변경
+            const sortBy = document.getElementById('sortBy');
+            if (sortBy) {
+                sortBy.addEventListener('change', async function(e) {
+                    currentSort = e.target.value;
+                    currentPage = 1; // 정렬 변경 시 첫 페이지로
+                    await loadCustomerData();
+                });
+            }
+            
+            // 전체 삭제 버튼
+            const deleteAllBtn = document.getElementById('deleteAllBtn');
+            if (deleteAllBtn) {
+                deleteAllBtn.addEventListener('click', deleteAllCustomers);
+            }
+            
+            // CSV 내보내기 버튼
+            const exportCSVBtn = document.getElementById('exportCSVBtn');
+            if (exportCSVBtn) {
+                exportCSVBtn.addEventListener('click', exportToCSV);
+            }
+            
+            // 상세 보기 모달 닫기
+            const closeDetailModal = document.getElementById('closeDetailModal');
+            if (closeDetailModal) {
+                closeDetailModal.addEventListener('click', closeCustomerDetailModal);
+            }
+            
+            // 상세 보기 모달 외부 클릭 시 닫기
+            const customerDetailModal = document.getElementById('customerDetailModal');
+            if (customerDetailModal) {
+                customerDetailModal.addEventListener('click', function(e) {
+                    if (e.target === customerDetailModal) {
+                        closeCustomerDetailModal();
+                    }
+                });
+            }
+        });
+
+        // ==================== 환경 변수 설정 적용 ====================
+        // ENV_CONFIG가 로드되었는지 확인하고 이메일 주소 설정
+        function initConfig() {
+            // ENV_CONFIG가 정의되어 있지 않으면 기본값 사용
+            const recipientEmail = (typeof ENV_CONFIG !== 'undefined' && ENV_CONFIG.RECIPIENT_EMAIL) 
+                ? ENV_CONFIG.RECIPIENT_EMAIL 
+                : 'didalsdk@gmail.com';
+            
+            // 이메일 주소를 화면에 표시
+            const contactEmailEl = document.getElementById('contactEmail');
+            if (contactEmailEl) {
+                contactEmailEl.textContent = recipientEmail;
+            }
+            
+            const footerEmailEl = document.getElementById('footerEmail');
+            if (footerEmailEl) {
+                footerEmailEl.textContent = recipientEmail;
+            }
+            
+            // 전역 변수로 설정 (다른 함수에서 사용 가능)
+            window.RECIPIENT_EMAIL = recipientEmail;
+            
+            // Firebase 초기화
+            initFirebase();
+        }
+        
+        // Firebase 초기화 함수
+        function initFirebase() {
+            if (typeof firebase === 'undefined') {
+                console.warn('Firebase SDK가 로드되지 않았습니다.');
+                return;
+            }
+            
+            if (typeof ENV_CONFIG === 'undefined' || !ENV_CONFIG.FIREBASE) {
+                console.warn('Firebase 설정이 없습니다.');
+                return;
+            }
+            
+            try {
+                // Firebase 초기화
+                firebase.initializeApp(ENV_CONFIG.FIREBASE);
+                console.log('Firebase 초기화 완료');
+                
+                // Firebase 인증 및 Firestore 인스턴스 전역 변수로 설정
+                window.firebaseAuth = firebase.auth();
+                window.firebaseFirestore = firebase.firestore();
+            } catch (error) {
+                console.error('Firebase 초기화 오류:', error);
+            }
+        }
+        
+        // 페이지 로드 시 설정 적용 (config.js 로드 후)
+        function waitForConfig() {
+            if (typeof ENV_CONFIG !== 'undefined') {
+                initConfig();
+            } else {
+                // config.js가 아직 로드되지 않았으면 잠시 후 다시 시도
+                setTimeout(waitForConfig, 100);
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForConfig);
+        } else {
+            waitForConfig();
+        }
+
+        // ==================== 기존 기능 ====================
+        
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const defaultMessageWithExamples = '웹사이트 목표 : 회사 소개, 쇼핑몰, 정보 제공, 커뮤니티 등\n\n방문자층 : 연령대, 성별, 관심사\n\n사용자 경험 : 반응형, 직관성\n\n접속 환경 : 희망 도메인(.com, co.kr 등)\n\n운영 계획 : 제작 후 업데이트, 오류 수정, 보관 관리 및 유지 보수 희망 여부';
+        const templateMessageLabelsOnly = '웹사이트 목표 : \n\n방문자층 : \n\n사용자 경험 : \n\n접속 환경 : \n\n운영 계획 : ';
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 폼 데이터 가져오기
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            // 웹사이트 목표 추출 (첫 번째 줄에서 콜론 뒤 내용)
+            let websiteGoal = '';
+            const goalMatch = message.match(/웹사이트 목표\s*:\s*(.+)/);
+            if (goalMatch && goalMatch[1]) {
+                // 줄바꿈이나 다른 라벨이 나오기 전까지 추출
+                websiteGoal = goalMatch[1].split('\n')[0].trim();
+            }
+            
+            // 고객 데이터 저장
+            if (typeof saveCustomerData === 'function') {
+                saveCustomerData(name, phone, email, message);
+            }
+            
+            // 성공 메시지 표시
+            alert('메시지가 전송되었습니다! 관리자가 확인 후 연락드리겠습니다.');
+            
+            // 폼 리셋 후 예시가 포함된 기본 메시지로 복원
+            this.reset();
+            const messageField = document.getElementById('message');
+            if (messageField) {
+                messageField.value = defaultMessageWithExamples;
+            }
+        });
+
+        // Message textarea with template labels
+        const messageTextarea = document.getElementById('message');
+        
+        if (messageTextarea) {
+            // 포커스 시 예시가 포함된 기본 메시지면 라벨만 남기기
+            messageTextarea.addEventListener('focus', function() {
+                // 예시가 포함된 기본 메시지 상태라면 라벨만 남기기
+                if (this.value === defaultMessageWithExamples) {
+                    this.value = templateMessageLabelsOnly;
+                    // 커서를 "웹사이트 목표 : " 뒤로 이동
+                    this.setSelectionRange(12, 12);
+                }
+            });
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(15, 20, 34, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.background = 'rgba(15, 20, 34, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Active Navigation Highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = 'var(--text-white)';
+                if (link.getAttribute('href') === `#${current}` && !link.classList.contains('btn-contact')) {
+                    link.style.color = 'var(--primary-blue)';
+                }
+            });
+        });
+
+        // Footer Tabs Modal Functionality
+        const TAB_CONTENTS = {
+            home: {
+                title: '홈',
+                content: `
+                    <h3>WebStudio에 오신 것을 환영합니다</h3>
+                    <p>WebStudio는 혁신적인 디지털 솔루션을 제공하는 전문 웹 개발 에이전시입니다. 우리는 고객의 비즈니스 성장을 돕기 위해 최신 기술과 창의적인 디자인을 결합합니다.</p>
+                    <h3>우리의 핵심 가치</h3>
+                    <ul>
+                        <li><strong>혁신:</strong> 최신 기술과 트렌드를 활용한 창의적 솔루션</li>
+                        <li><strong>품질:</strong> 모든 프로젝트에 최고 수준의 품질 보장</li>
+                        <li><strong>신뢰:</strong> 투명한 커뮤니케이션과 약속된 일정 준수</li>
+                        <li><strong>고객 중심:</strong> 고객의 성공이 우리의 목표</li>
+                    </ul>
+                    <h3>주요 서비스</h3>
+                    <p>웹 개발, 모바일 앱 개발, UI/UX 디자인, 디지털 마케팅 등 다양한 서비스를 제공합니다. 프로젝트에 대해 이야기를 나눠보시려면 언제든지 연락해 주세요.</p>
+                `
+            },
+            company: {
+                title: '회사소개',
+                content: `
+                    <h3>회사 개요</h3>
+                    <p>부스트캠프는 2020년 설립된 디지털 에이전시로, 국내외 다양한 고객들에게 웹 솔루션을 제공하고 있습니다. 우리는 기술력과 창의성을 바탕으로 고객의 비즈니스 가치를 극대화하는 것을 목표로 합니다.</p>
+                    <h3>회사 연혁</h3>
+                    <ul>
+                        <li><strong>2020년:</strong> 부스트캠프 설립</li>
+                        <li><strong>2021년:</strong> 주요 기업 고객 확보 (20+ 프로젝트)</li>
+                        <li><strong>2022년:</strong> 모바일 앱 개발 사업 확장</li>
+                        <li><strong>2023년:</strong> 해외 진출 및 글로벌 프로젝트 진행</li>
+                        <li><strong>2024년:</strong> 팀 규모 확대 및 기술 혁신 강화</li>
+                        <li><strong>2025년:</strong> AI 통합 솔루션 개발 시작</li>
+                    </ul>
+                    <h3>조직 구성</h3>
+                    <p>우리는 개발팀, 디자인팀, 마케팅팀, 기획팀으로 구성되어 있으며, 각 분야의 전문가들이 협업하여 최고의 결과물을 만들어냅니다.</p>
+                    <h3>비전</h3>
+                    <p>디지털 혁신을 통해 더 나은 세상을 만들어가는 것이 부스트캠프의 비전입니다. 우리는 고객의 성공을 통해 사회에 기여하고, 지속 가능한 성장을 추구합니다.</p>
+                `
+            },
+            terms: {
+                title: '이용약관',
+                content: `
+                    <h3>제1조(목적)</h3>
+                    <p>이 약관은 양민아(전자상거래 사업자)가 운영하는 부스트캠프 경기지사 사이버 몰(이하 "몰"이라 한다)에서 제공하는 인터넷 관련 서비스(이하 "서비스"라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리/ 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+                    <p>※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」</p>
+                    <h3>제2조(정의)</h3>
+                    <p>① "몰"이란 부스트캠프 경기지사 회사가 재화 또는 용역(이하 "재화 등"이라 함)을 이용자에게 제공하기 위하여 컴퓨터 등 정보통신설비를 이용하여 재화 등을 거래할 수 있도록 설정한 가상의 영업장을 말하며, 아울러 사이버몰을 운영하는 사업자의 의미로도 사용합니다.</p>
+                    <p>② "이용자"란 "몰"에 접속하여 이 약관에 따라 "몰"이 제공하는 서비스를 받는 회원 및 비회원을 말합니다.</p>
+                    <p>③ '회원'이라 함은 "몰"에 회원등록을 한 자로서, 계속적으로 "몰"이 제공하는 서비스를 이용할 수 있는 자를 말합니다.</p>
+                    <p>④ '비회원'이라 함은 회원에 가입하지 않고 "몰"이 제공하는 서비스를 이용하는 자를 말합니다.</p>
+                    <h3>제3조 (약관 등의 명시와 설명 및 개정)</h3>
+                    <p>① "몰"은 이 약관의 내용과 상호 및 대표자 성명, 영업소 소재지 주소(소비자의 불만을 처리할 수 있는 곳의 주소를 포함), 전화번호, 모사전송번호, 전자우편주소, 사업자등록번호, 통신판매업 신고번호, 개인정보보호책임자등을 이용자가 쉽게 알 수 있도록 부스트캠프 경기지사 사이버몰의 초기 서비스화면(전면)에 게시합니다. 다만, 약관의 내용은 이용자가 연결화면을 통하여 볼 수 있도록 할 수 있습니다.</p>
+                    <p>② "몰은 이용자가 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회?배송책임?환불조건 등과 같은 중요한 내용을 이용자가 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공하여 이용자의 확인을 구하여야 합니다.</p>
+                    <p>③ "몰"은 「전자상거래 등에서의 소비자보호에 관한 법률」, 「약관의 규제에 관한 법률」, 「전자문서 및 전자거래기본법」, 「전자금융거래법」, 「전자서명법」, 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」, 「방문판매 등에 관한 법률」, 「소비자기본법」 등 관련 법을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.</p>
+                    <p>④ "몰"이 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 현행약관과 함께 몰의 초기화면에 그 적용일자 7일 이전부터 적용일자 전일까지 공지합니다. 다만, 이용자에게 불리하게 약관내용을 변경하는 경우에는 최소한 30일 이상의 사전 유예기간을 두고 공지합니다. 이 경우 "몰"은 개정 전 내용과 개정 후 내용을 명확하게 비교하여 이용자가 알기 쉽도록 표시합니다.</p>
+                    <p>⑤ "몰"이 약관을 개정할 경우에는 그 개정약관은 그 적용일자 이후에 체결되는 계약에만 적용되고 그 이전에 이미 체결된 계약에 대해서는 개정 전의 약관조항이 그대로 적용됩니다. 다만 이미 계약을 체결한 이용자가 개정약관 조항의 적용을 받기를 원하는 뜻을 제3항에 의한 개정약관의 공지기간 내에 "몰"에 송신하여 "몰"의 동의를 받은 경우에는 개정약관 조항이 적용됩니다.</p>
+                    <p>⑥ 이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 전자상거래 등에서의 소비자보호에 관한 법률, 약관의 규제 등에 관한 법률, 공정거래위원회가 정하는 전자상거래 등에서의 소비자 보호지침 및 관계법령 또는 상관례에 따릅니다.</p>
+                    <h3>제4조(서비스의 제공 및 변경)</h3>
+                    <p>① "몰"은 다음과 같은 업무를 수행합니다.</p>
+                    <ul>
+                        <li>재화 또는 용역에 대한 정보 제공 및 구매계약의 체결</li>
+                        <li>구매계약이 체결된 재화 또는 용역의 배송</li>
+                        <li>기타 "몰"이 정하는 업무</li>
+                    </ul>
+                    <p>② "몰"은 재화 또는 용역의 품절 또는 기술적 사양의 변경 등의 경우에는 장차 체결되는 계약에 의해 제공할 재화 또는 용역의 내용을 변경할 수 있습니다. 이 경우에는 변경된 재화 또는 용역의 내용 및 제공일자를 명시하여 현재의 재화 또는 용역의 내용을 게시한 곳에 즉시 공지합니다.</p>
+                    <p>③ "몰"이 제공하기로 이용자와 계약을 체결한 서비스의 내용을 재화등의 품절 또는 기술적 사양의 변경 등의 사유로 변경할 경우에는 그 사유를 이용자에게 통지 가능한 주소로 즉시 통지합니다.</p>
+                    <p>④ 전항의 경우 "몰"은 이로 인하여 이용자가 입은 손해를 배상합니다. 다만, "몰"이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.</p>
+                    <h3>제5조(서비스의 중단)</h3>
+                    <p>① "몰"은 컴퓨터 등 정보통신설비의 보수점검 교체 및 고장, 통신의 두절 등의 사유가 발생한 경우에는 서비스의 제공을 일시적으로 중단할 수 있습니다.</p>
+                    <p>② "몰"은 제1항의 사유로 서비스의 제공이 일시적으로 중단됨으로 인하여 이용자 또는 제3자가 입은 손해에 대하여 배상합니다. 단, "몰"이 고의 또는 과실이 없음을 입증하는 경우에는 그러하지 아니합니다.</p>
+                    <p>③ 사업종목의 전환, 사업의 포기, 업체 간의 통합 등의 이유로 서비스를 제공할 수 없게 되는 경우에는 "몰"은 제8조에 정한 방법으로 이용자에게 통지하고 당초 "몰"에서 제시한 조건에 따라 소비자에게 보상합니다. 다만, "몰"이 보상기준 등을 고지하지 아니한 경우에는 이용자들의 마일리지 또는 적립금 등을 "몰"에서 통용되는 통화가치에 상응하는 현물 또는 현금으로 이용자에게 지급합니다.</p>
+                    <h3>제6조(회원가입)</h3>
+                    <p>① 이용자는 "몰"이 정한 가입 양식에 따라 회원정보를 기입한 후 이 약관에 동의한다는 의사표시를 함으로서 회원가입을 신청합니다.</p>
+                    <p>② "몰"은 제1항과 같이 회원으로 가입할 것을 신청한 이용자 중 다음 각 호에 해당하지 않는 한 회원으로 등록합니다.</p>
+                    <ul>
+                        <li>가입신청자가 이 약관 제7조제3항에 의하여 이전에 회원자격을 상실한 적이 있는 경우, 다만 제7조제3항에 의한 회원자격 상실 후 3년이 경과한 자로서 "몰"의 회원재가입 승낙을 얻은 경우에는 예외로 한다.</li>
+                        <li>등록 내용에 허위, 기재누락, 오기가 있는 경우</li>
+                        <li>기타 회원으로 등록하는 것이 "몰"의 기술상 현저히 지장이 있다고 판단되는 경우</li>
+                    </ul>
+                    <p>③ 회원가입계약의 성립 시기는 "몰"의 승낙이 회원에게 도달한 시점으로 합니다.</p>
+                    <p>④ 회원은 회원가입 시 등록한 사항에 변경이 있는 경우, 상당한 기간 이내에 "몰"에 대하여 회원정보 수정 등의 방법으로 그 변경사항을 알려야 합니다.</p>
+                    <h3>제7조(회원 탈퇴 및 자격 상실 등)</h3>
+                    <p>① 회원은 "몰"에 언제든지 탈퇴를 요청할 수 있으며 "몰"은 즉시 회원탈퇴를 처리합니다.</p>
+                    <p>② 회원이 다음 각 호의 사유에 해당하는 경우, "몰"은 회원자격을 제한 및 정지시킬 수 있습니다.</p>
+                    <ul>
+                        <li>가입 신청 시에 허위 내용을 등록한 경우</li>
+                        <li>"몰"을 이용하여 구입한 재화 등의 대금, 기타 "몰"이용에 관련하여 회원이 부담하는 채무를 기일에 지급하지 않는 경우</li>
+                        <li>다른 사람의 "몰" 이용을 방해하거나 그 정보를 도용하는 등 전자상거래 질서를 위협하는 경우</li>
+                        <li>"몰"을 이용하여 법령 또는 이 약관이 금지하거나 공서양속에 반하는 행위를 하는 경우</li>
+                    </ul>
+                    <p>③ "몰"이 회원 자격을 제한?정지 시킨 후, 동일한 행위가 2회 이상 반복되거나 30일 이내에 그 사유가 시정되지 아니하는 경우 "몰"은 회원자격을 상실시킬 수 있습니다.</p>
+                    <p>④ "몰"이 회원자격을 상실시키는 경우에는 회원등록을 말소합니다. 이 경우 회원에게 이를 통지하고, 회원등록 말소 전에 최소한 30일 이상의 기간을 정하여 소명할 기회를 부여합니다.</p>
+                `
+            },
+            privacy: {
+                title: '개인정보처리방침',
+                content: `
+                    <p>부스트캠프 경기지사 (이하 "회사"는) 고객님의 개인정보를 중요시하며, "정보통신망 이용촉진 및 정보보호"에 관한 법률을 준수하고 있습니다.</p>
+                    <p>회사는 개인정보처리방침을 통하여 고객님께서 제공하시는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.</p>
+                    <h3>■ 수집하는 개인정보 항목 및 수집방법</h3>
+                    <p><strong>가. 수집하는 개인정보의 항목</strong></p>
+                    <p>o 회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p>
+                    <ul>
+                        <li><strong>회원가입시:</strong> 이름, 생년월일, 성별, 로그인ID, 비밀번호, 자택 전화번호, 휴대전화번호, 이메일, 14세미만 가입자의 경우 법정대리인의 정보</li>
+                        <li><strong>서비스 신청시:</strong> 주소, 결제 정보</li>
+                    </ul>
+                    <p>o 서비스 이용 과정이나 사업 처리 과정에서 서비스이용기록, 접속로그, 쿠키, 접속 IP, 결제 기록, 불량이용 기록이 생성되어 수집될 수 있습니다.</p>
+                    <p><strong>나. 수집방법</strong></p>
+                    <p>- 홈페이지, 서면양식, 게시판, 이메일, 이벤트 응모, 배송요청, 전화, 팩스, 생성 정보 수집 툴을 통한 수집</p>
+                    <h3>■ 개인정보의 수집 및 이용목적</h3>
+                    <p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p>
+                    <p><strong>o 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</strong></p>
+                    <p>콘텐츠 제공, 구매 및 요금 결제, 물품배송 또는 청구지 등 발송, 금융거래 본인 인증 및 금융 서비스</p>
+                    <p><strong>o 회원 관리</strong></p>
+                    <p>회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 연령확인, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리, 고지사항 전달</p>
+                    <p><strong>o 마케팅 및 광고에 활용</strong></p>
+                    <p>이벤트 등 광고성 정보 전달, 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계</p>
+                    <h3>■ 개인정보의 보유 및 이용기간</h3>
+                    <p>원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.</p>
+                    <p><strong>가. 회사 내부방침에 의한 정보보유 사유</strong></p>
+                    <p>회원이 탈퇴한 경우에도 불량회원의 부정한 이용의 재발을 방지, 분쟁해결 및 수사기관의 요청에 따른 협조를 위하여, 이용계약 해지일로부터 5년간 회원의 정보를 보유할 수 있습니다.</p>
+                    <p><strong>나. 관련 법령에 의한 정보 보유 사유</strong></p>
+                    <p>전자상거래등에서의소비자보호에관한법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 아래와 같이 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다.</p>
+                    <p>o 계약 또는 청약철회 등에 관한 기록<br>-보존이유: 전자상거래등에서의소비자보호에관한법률<br>-보존기간: 5년</p>
+                    <p>o 대금 결제 및 재화 등의 공급에 관한 기록<br>-보존이유: 전자상거래등에서의소비자보호에관한법률<br>-보존기간: 5년</p>
+                    <p>o 소비자 불만 또는 분쟁처리에 관한 기록<br>-보존이유: 전자상거래등에서의소비자보호에관한법률<br>-보존기간: 3년</p>
+                    <p>o 로그 기록<br>-보존이유: 통신비밀보호법<br>-보존기간: 3개월</p>
+                    <h3>■ 개인정보의 파기절차 및 방법</h3>
+                    <p>회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.</p>
+                    <p><strong>o 파기절차</strong></p>
+                    <p>회원님이 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기되어집니다.</p>
+                    <p>별도 DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 보유되어지는 이외의 다른 목적으로 이용되지 않습니다.</p>
+                    <p><strong>o 파기방법</strong></p>
+                    <p>전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다.</p>
+                    <h3>■ 개인정보 제공</h3>
+                    <p>회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
+                    <ul>
+                        <li>이용자들이 사전에 동의한 경우</li>
+                        <li>법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+                    </ul>
+                    <h3>■ 수집한 개인정보의 위탁</h3>
+                    <p>회사는 서비스 이행을 위해 아래와 같이 외부 전문업체에 위탁하여 운영하고 있습니다.</p>
+                    <ul>
+                        <li><strong>위탁 대상자:</strong> [KCP]</li>
+                        <li><strong>위탁업무 내용:</strong> [카드결제/ 계좌이체/ 휴대폰결제]</li>
+                    </ul>
+                    <h3>■ 이용자 및 법정대리인의 권리와 그 행사방법</h3>
+                    <p>o 이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 가입해지를 요청할 수도 있습니다.</p>
+                    <p>o 이용자들의 개인정보 조회,수정을 위해서는 "개인정보변경"(또는 "회원정보수정" 등)을 가입해지(동의철회)를 위해서는 "회원탈퇴"를 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다.</p>
+                    <p>o 혹은 개인정보보호책임자에게 서면, 전화 또는 이메일로 연락하시면 지체없이 조치하겠습니다.</p>
+                    <p>o 귀하가 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한 잘못된 개인정보를 제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체없이 통지하여 정정이 이루어지도록 하겠습니다.</p>
+                    <p>o 회사는 이용자의 요청에 의해 해지 또는 삭제된 개인정보는 "회사가 수집하는 개인정보의 보유 및 이용기간"에 명시된 바에 따라 처리하고 그 외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.</p>
+                    <h3>■ 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항</h3>
+                    <p>회사는 귀하의 정보를 수시로 저장하고 찾아내는 "쿠키(cookie)" 등을 운용합니다. 쿠키란 웹사이트를 운영하는데 이용되는 서버가 귀하의 브라우저에 보내는 아주 작은 텍스트 파일로서 귀하의 컴퓨터 하드디스크에 저장됩니다.</p>
+                    <p>회사은(는) 다음과 같은 목적을 위해 쿠키를 사용합니다.</p>
+                    <p><strong>o 쿠키 등 사용 목적</strong></p>
+                    <ol>
+                        <li>회원과 비회원의 접속 빈도나 방문 시간 등을 분석, 이용자의 취향과 관심분야를 파악 및 자취 추적, 각종 이벤트 참여 정도 및 방문 회수 파악 등을 통한 타겟 마케팅 및 개인 맞춤 서비스 제공</li>
+                        <li>귀하는 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서, 귀하는 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다.</li>
+                    </ol>
+                    <p><strong>o 쿠키 설정 거부 방법</strong></p>
+                    <ol>
+                        <li>쿠키 설정을 거부하는 방법으로는 회원님이 사용하시는 웹 브라우저의 옵션을 선택함으로써 모든 쿠키를 허용하거나 쿠키를 저장할 때마다 확인을 거치거나, 모든 쿠키의 저장을 거부할 수 있습니다.</li>
+                        <li>설정방법 예(인터넷 익스플로어의 경우): 웹 브라우저 상단의 도구 > 인터넷 옵션 > 개인정보</li>
+                        <li>단, 귀하께서 쿠키 설치를 거부하였을 경우 서비스 제공에 어려움이 있을 수 있습니다.</li>
+                    </ol>
+                    <h3>■ 개인정보에 관한 민원서비스</h3>
+                    <p>회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보보호책임자를 지정하고 있습니다.</p>
+                    <p><strong>o 개인정보보호담당자</strong></p>
+                    <ul>
+                        <li>성명: </li>
+                        <li>소속: </li>
+                        <li>전화번호: </li>
+                        <li>이메일: </li>
+                    </ul>
+                    <p><strong>o 개인정보보호책임자</strong></p>
+                    <ul>
+                        <li>성명: </li>
+                        <li>소속: </li>
+                        <li>전화번호: </li>
+                        <li>이메일: </li>
+                    </ul>
+                    <p>o 귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보보호책임자 혹은 담당부서로 신고하실 수 있습니다.</p>
+                    <p>o 회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.</p>
+                    <p>o 기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p>
+                    <ul>
+                        <li>개인정보침해신고센터 (privacy.kisa.or.kr / 국번 없이 118)</li>
+                        <li>대검찰청 사이버범죄수사단 (www.spo.go.kr / 02-3480-2000)</li>
+                        <li>경찰청 사이버안전국 (www.ctrc.go.kr / 국번 없이 182)</li>
+                    </ul>
+                `
+            }
+        };
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+        const footerTabs = document.querySelectorAll('.footer-tab');
+
+        function openModal(tabType) {
+            const content = TAB_CONTENTS[tabType];
+            if (content) {
+                modalTitle.textContent = content.title;
+                modalBody.innerHTML = content.content;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        footerTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabType = tab.getAttribute('data-tab');
+                if (tabType === 'home') {
+                    const homeSection = document.getElementById('home');
+                    if (homeSection) {
+                        const offsetTop = homeSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                } else {
+                    openModal(tabType);
+                }
+            });
+        });
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Team Member Profile Modal
+        const TEAM_MEMBERS = {
+            1: {
+                initials: 'SB',
+                name: '서배준',
+                role: 'CEO & Founder',
+                bio: '부스트캠프 경기지사의 창립자이자 최고경영자로서 회사의 비전과 방향을 이끌어갑니다. 10년 이상의 IT 업계 경험을 바탕으로 혁신적인 디지털 솔루션을 제공합니다.',
+                email: 'seo@boostcamp.co.kr',
+                phone: '010-2474-8514',
+                image: 'sbj.png'
+            },
+            2: {
+                initials: 'YA',
+                name: '양민아',
+                role: 'Lead Designer',
+                bio: '사용자 경험을 최우선으로 하는 UI/UX 디자이너입니다. 직관적이고 아름다운 인터페이스 설계를 통해 고객의 비즈니스 가치를 극대화합니다.',
+                email: 'yang@boostcamp.co.kr',
+                phone: '010-2474-8514',
+                image: 'mina.jpg'
+            },
+            3: {
+                initials: 'BG',
+                name: '박건휘',
+                role: 'Tech Lead',
+                bio: '최신 기술 트렌드를 이끌어가는 기술 리더입니다. 견고하고 확장 가능한 아키텍처 설계로 안정적인 서비스를 구축합니다.',
+                email: 'park@boostcamp.co.kr',
+                phone: '010-2474-8514',
+                image: 'pkh.png'
+            },
+            4: {
+                initials: 'KH',
+                name: '김하은',
+                role: 'Marketing Director',
+                bio: '데이터 기반의 마케팅 전략을 수립하고 실행합니다. 브랜드 인지도 향상과 고객 확보를 위한 효과적인 마케팅 솔루션을 제공합니다.',
+                email: 'kim@boostcamp.co.kr',
+                phone: '010-2474-8514',
+                image: 'k.png'
+            },
+            5: {
+                initials: 'SJ',
+                name: '성준성',
+                role: 'Business Developer',
+                bio: '새로운 비즈니스 기회를 발굴하고 파트너십을 구축합니다. 고객과의 관계를 중시하며 지속 가능한 성장을 추구합니다.',
+                email: 'sung@boostcamp.co.kr',
+                phone: '010-2474-8514',
+                image: 'sjs.png'
+            }
+        };
+
+        function openProfileModal(memberId) {
+            const member = TEAM_MEMBERS[memberId];
+            if (member) {
+                modalTitle.textContent = member.name;
+                
+                // 이미지가 있으면 이미지 표시, 없으면 이니셜 표시
+                const avatarContent = member.image 
+                    ? `<img src="${member.image}" alt="${member.name}">`
+                    : member.initials;
+                
+                modalBody.innerHTML = `
+                    <div class="profile-modal-content">
+                        <div class="profile-modal-avatar">${avatarContent}</div>
+                        <h2 class="profile-modal-name">${member.name}</h2>
+                        <p class="profile-modal-role">${member.role}</p>
+                        <div class="profile-modal-info">
+                            <h4>소개</h4>
+                            <p>${member.bio}</p>
+                            <h4>연락처</h4>
+                            <p>이메일: ${member.email}</p>
+                            <p>전화: ${member.phone}</p>
+                        </div>
+                    </div>
+                `;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Team card click events
+        const teamCards = document.querySelectorAll('.team-card[data-member]');
+        teamCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const memberId = parseInt(card.getAttribute('data-member'));
+                openProfileModal(memberId);
+            });
+        });
+
+        // Visitor Counter
+        function updateVisitorCount() {
+            const visitorCountElement = document.getElementById('visitorCount');
+            if (!visitorCountElement) return;
+
+            // localStorage에서 현재 방문 횟수 가져오기
+            let visitCount = localStorage.getItem('visitCount');
+            
+            // 저장된 값이 없으면 1로 시작
+            if (visitCount === null) {
+                visitCount = 1;
+            } else {
+                // 방문할 때마다 증가
+                visitCount = parseInt(visitCount) + 1;
+            }
+
+            // localStorage에 저장
+            localStorage.setItem('visitCount', visitCount);
+
+            // 카운팅 애니메이션 함수
+            function animateCount(start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const current = Math.floor(progress * (end - start) + start);
+                    visitorCountElement.textContent = current;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        visitorCountElement.textContent = end;
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // 이전 값에서 새 값으로 애니메이션
+            const previousCount = parseInt(visitorCountElement.textContent) || 1;
+            animateCount(previousCount, visitCount, 1000);
+        }
+
+        // 페이지 로드 시 방문 횟수 업데이트
+        updateVisitorCount();
+
+        // Project Counter
+        function updateProjectCount() {
+            const projectCountElement = document.getElementById('projectCount');
+            if (!projectCountElement) return;
+
+            let projectCount = localStorage.getItem('projectCount');
+            
+            if (projectCount === null) {
+                projectCount = 150;
+            } else {
+                projectCount = parseInt(projectCount) + 1;
+            }
+
+            localStorage.setItem('projectCount', projectCount);
+
+            function animateCount(start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const current = Math.floor(progress * (end - start) + start);
+                    projectCountElement.textContent = current;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        projectCountElement.textContent = end;
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const previousCount = parseInt(projectCountElement.textContent) || 150;
+            animateCount(previousCount, projectCount, 1000);
+        }
+
+        // Customer Counter
+        function updateCustomerCount() {
+            const customerCountElement = document.getElementById('customerCount');
+            if (!customerCountElement) return;
+
+            let customerCount = localStorage.getItem('customerCount');
+            
+            if (customerCount === null) {
+                customerCount = 50;
+            } else {
+                customerCount = parseInt(customerCount) + 1;
+            }
+
+            localStorage.setItem('customerCount', customerCount);
+
+            function animateCount(start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const current = Math.floor(progress * (end - start) + start);
+                    customerCountElement.textContent = current;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        customerCountElement.textContent = end;
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const previousCount = parseInt(customerCountElement.textContent) || 50;
+            animateCount(previousCount, customerCount, 1000);
+        }
+
+        // 페이지 로드 시 모든 카운터 업데이트
+        updateProjectCount();
+        updateCustomerCount();
+        
+        console.log('=== 페이지 로드 완료 ===');
+        console.log('현재 시간:', new Date().toISOString());
+    </script>
+</body>
+</html>

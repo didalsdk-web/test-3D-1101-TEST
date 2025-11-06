@@ -1,0 +1,12 @@
+# 환경 변수 파일 (민감한 정보 포함 가능)
+# env/config.js 파일은 실제 환경에 따라 다를 수 있으므로 Git에서 제외
+env/config.js
+
+# 로컬 개발 환경 파일
+.env.local
+*.local.js
+
+# 기타 민감한 정보
+*.env
+.env
+
